@@ -1,10 +1,15 @@
-using Integration
-using Test
+using Integration, Test
 
-function f(x)
+# Gaussian curve test
+N_gauss_test = 1001;
+function expnx2(x)
     exp.(-x.^2)
 end
 
-@testset "general" begin
-    @test simpsons(f, 1001, 0, 100) ≈ sqrt(pi)/2
+@testset "Gaussian curve" begin
+    @test simpsons(expnx2, N_gauss_test, 0, 100) ≈ sqrt(pi)/2
+    @test trapezoidal(expnx2, N_gauss_test, 0, 100) ≈ sqrt(pi)/2
+    @test legendre_quadrature(expnx2, N_gauss_test, 0, 100) ≈ sqrt(pi)/2
+    @test chebyshev_quadrature(expnx2, 1, N_gauss_test, 0, 100) ≈ sqrt(pi)/2
+    @test chebyshev_quadrature(expnx2, 2, N_gauss_test, 0, 100) ≈ sqrt(pi)/2
 end
