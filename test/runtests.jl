@@ -1,4 +1,4 @@
-using Pkg;
+import Pkg;
 Pkg.add("Test")
 using Integration, Test
 
