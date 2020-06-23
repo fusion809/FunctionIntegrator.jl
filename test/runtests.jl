@@ -13,12 +13,13 @@ end
 end
 
 # Simple pendulum test
-N_simple_pendulum_test = 100;
+N_simple_pendulum_test1 = 100;
+N_simple_pendulum_test2 = 10000;
 function simppen(x)
     (-19.6*sin.(x)).^(-0.5)
 end
 
 @testset "Simple pendulum" begin
-    @test chebyshev_quadrature(simppen, 1, N_simple_pendulum_test, -pi, 0) ≈ ellipk(1/2)/sqrt(2.45)
-    @test chebyshev_quadrature(simppen, 2, N_simple_pendulum_test, -pi, 0) ≈ ellipk(1/2)/sqrt(2.45)
+    @test chebyshev_quadrature(simppen, 1, N_simple_pendulum_test1, -pi, 0) ≈ ellipk(1/2)/sqrt(2.45)
+    @test chebyshev_quadrature(simppen, 2, N_simple_pendulum_test2, -pi, 0) ≈ ellipk(1/2)/sqrt(2.45)
 end
