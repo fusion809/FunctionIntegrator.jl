@@ -1,3 +1,5 @@
+using Pkg;
+Pkg.add("Test")
 using Integration, Test
 
 function f(x)
