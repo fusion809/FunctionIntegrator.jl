@@ -10,6 +10,7 @@ Uses Chebyshev-Gauss quadrature to approximate the integral:
 `k` is the kind of the Chebyshev polynomial used in the quadrature. If ``k=2``, Chebyshev polynomials of the second kind ``U_n(x)`` are used; if ``k=1``, Chebyshev polynomials of the first kind ``T_n(x)`` are used. 
 """
 function chebyshev_quadrature(f, k, N, a, b)
+    N = convert(Int64, N);
     n = 1:1:N;
     if k == 2
         # Grid

@@ -124,6 +124,7 @@ Uses [Legendre-Gauss quadrature](https://mathworld.wolfram.com/Legendre-GaussQua
 The argument `N` refers to the number of nodes used in the quadrature.
 """
 function legendre_quadrature(f, N, a, b)
+    N = convert(Int64, N);
     weights, zeros = legendre_weights_and_zeros(N);
     u = (b-a)/2*zeros.+(a+b)/2;
     return (b-a)/2*sum(weights.*f(u))

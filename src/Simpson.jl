@@ -18,6 +18,7 @@ Uses [Simpson's rule](http://mathworld.wolfram.com/SimpsonsRule.html) to approxi
 ``N+1`` steps are used, if endpoints are included. 
 """
 function simpsons(f, N, a, b)
+    N = convert(Int64, N);
     h = (b-a)/N;
     y = 0;
     x = a;

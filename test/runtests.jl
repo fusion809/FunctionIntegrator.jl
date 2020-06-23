@@ -15,8 +15,6 @@ end
 end
 
 # Simple pendulum test
-N_simple_pendulum_test1 = 100;
-N_simple_pendulum_test2 = 10000;
 simppen_analytical = ellipk(1/2)/sqrt(2.45); 
 function simppen(x)
     (-19.6*sin.(x)).^(-0.5)
@@ -24,10 +22,28 @@ end
 
 @testset "Simple pendulum" begin
     # Singularities exist at the endpoints so Simpson's & the trapezoidal rule cannot start and end at them exactly
-    @test abs(simpsons(simppen, 10000000, -pi+1e-8, -1e-8) - simppen_analytical) < 1e-3
-    @test abs(trapezoidal(simppen, 10000000, -pi+1e-8, -1e-8) - simppen_analytical) < 1e-3
+    @test abs(simpsons(simppen, 100000000, -pi+1e-8, -1e-8) - simppen_analytical) < 1e-4
+    @test abs(trapezoidal(simppen, 100000000, -pi+1e-8, -1e-8) - simppen_analytical) < 1e-4
     @test abs(legendre_quadrature(simppen, 10000, -pi, 0) - simppen_analytical) < 1e-4
-    @test chebyshev_quadrature(simppen, 1, N_simple_pendulum_test1, -pi, 0) ≈ simppen_analytical
+    @test chebyshev_quadrature(simppen, 1, 100, -pi, 0) ≈ simppen_analytical
     # Can't use ≈ for the 2nd Chebyshev quadrature as there's too much error in its estimate for that to work
-    @test abs(chebyshev_quadrature(simppen, 2, N_simple_pendulum_test2, -pi, 0) - simppen_analytical) < 1e-3
+    @test abs(chebyshev_quadrature(simppen, 2, 10000, -pi, 0) - simppen_analytical) < 1e-3
+end
+
+# cosine test
+@testset "Cosine" begin
+    @test abs(simpsons(x -> cos.(x), 1000, 0, pi)) < 1e-14
+    @test abs(trapezoidal(x -> cos.(x), 1000, 0, pi)) < 1e-14
+    @test abs(legendre_quadrature(x -> cos.(x), 1000, 0, pi)) < 1e-14
+    @test abs(chebyshev_quadrature(x -> cos.(x), 1, 1000, 0, pi)) < 1e-14
+    @test abs(chebyshev_quadrature(x -> cos.(x), 2, 1000, 0, pi)) < 1e-14
+end
+
+# logarithm test
+@testset "Logarithm test" begin
+    @test abs(simpsons(x -> x.^(-1), 1000, 1, exp(1))-1) < 1e-10
+    @test abs(trapezoidal(x -> x.^(-1), 100000, 1, exp(1))-1) < 1e-10
+    @test abs(legendre_quadrature(x -> x.^(-1), 10000, 1, exp(1))-1) < 1e-10
+    @test abs(chebyshev_quadrature(x -> x.^(-1), 1, 1000, 1, exp(1))-1) < 1e-5
+    @test abs(chebyshev_quadrature(x -> x.^(-1), 2, 1000, 1, exp(1))-1) < 1e-5
 end

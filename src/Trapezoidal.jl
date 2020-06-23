@@ -16,6 +16,7 @@ Uses the [trapezoidal rule](https://mathworld.wolfram.com/TrapezoidalRule.html) 
 ``N+1`` steps are used, if endpoints are included. 
 """
 function trapezoidal(f, N, a, b)
+    N = convert(Int64, N);
     h = (b-a)/N;
     y = 0;
     x = a;
