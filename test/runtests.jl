@@ -1,7 +1,7 @@
 using Integration, Test
 
 # Gaussian curve test
-N_gauss_test = 1001;
+N_gauss_test = 10001;
 function expnx2(x)
     exp.(-x.^2)
 end
