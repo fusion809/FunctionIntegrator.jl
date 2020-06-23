@@ -12,6 +12,12 @@ function legendre(d, n, x)
         return 0
     elseif d==1 && n==1
         return 1
+    elseif d==2 && n==0
+        return 0
+    elseif d==2 && n==1
+        return 0
+    elseif d==2 && n==2
+        return 3
     elseif d==0 && n==0
         return 1
     elseif d==0 && n==1
@@ -27,8 +33,10 @@ function legendre(d, n, x)
             end
             if d==0
                 return Pn[n+1]
-            else
+            elseif d==1
                 return n*(x*Pn[n+1]-Pn[n])./((x.^2).-1)
+            elseif d==2
+                return ((x^2*((n+1)*(n+2)-2*(2*n+1))-n*(n+1))*Pn[n+1]+2*n*x.*Pn[n]).*((x.^2).-1).^(-2)
             end
         # x still needs to be a vector of some description.
         else
@@ -41,8 +49,10 @@ function legendre(d, n, x)
             end
             if d==0
                 return Pn[:,n+1]
-            else
+            elseif d==1
                 return n*(x.*Pn[:,n+1].-Pn[:,n])./((x.^2).-1)
+            elseif d==2
+                return ((x^2*((n+1)*(n+2)-2*(2*n+1))-n*(n+1))*Pn[:,n+1]+2*n*x.*Pn[:,n]).*((x.^2).-1).^(-2)
             end
         end
     end
@@ -53,8 +63,6 @@ end
 
 Returns the zeros of the nth [Legendre polynomial](https://mathworld.wolfram.com/LegendrePolynomial.html).
 """
-
-# Find the zeros of the nth Legendre polynomial
 function legendre_zeros(n)
     N = 2*n;
     # Chebyshev roots grid, seems to be the best analytical approximator
@@ -74,7 +82,7 @@ function legendre_zeros(n)
             diff = -legendre(0,n,xx[i])/legendre(1,n,xx[i]);
             xx[i] += diff;
         end
-        
+
         # The next bit of code is necessary to ensure there is no doubling
         # up in our roots
         Diff = 1e-5;
@@ -101,7 +109,7 @@ end
 """
     weights, zeros = legendre_weights_and_zeros(n)
 
-Returns the weights and nodes for Legendre-Gauss quadrature with ``n`` nodes. 
+Returns the weights and nodes for Legendre-Gauss quadrature with ``n`` nodes.
 """
 
 # weights, zeros = legendre_weights_and_zeros(n)
