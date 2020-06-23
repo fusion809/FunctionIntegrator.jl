@@ -1,7 +1,7 @@
-using Integration, Test
+using Integration, SpecialFunctions, Test
 
 # Gaussian curve test
-N_gauss_test = 10001;
+N_gauss_test = 10000;
 function expnx2(x)
     exp.(-x.^2)
 end
@@ -10,6 +10,15 @@ end
     @test simpsons(expnx2, N_gauss_test, 0, 100) ≈ sqrt(pi)/2
     @test trapezoidal(expnx2, N_gauss_test, 0, 100) ≈ sqrt(pi)/2
     @test legendre_quadrature(expnx2, N_gauss_test, 0, 100) ≈ sqrt(pi)/2
-    @test chebyshev_quadrature(expnx2, 1, N_gauss_test, 0, 100) ≈ sqrt(pi)/2
-    @test chebyshev_quadrature(expnx2, 2, N_gauss_test, 0, 100) ≈ sqrt(pi)/2
+end
+
+# Simple pendulum test
+N_simple_pendulum_test = 100;
+function simppen(x)
+    (-19.6*sin.(x)).^(-0.5)
+end
+
+@testset "Simple pendulum" begin
+    @test chebyshev_quadrature(simppen, 1, N_simple_pendulum_test, -pi, 0) ≈ ellipk(1/2)/sqrt(2.45)
+    @test chebyshev_quadrature(simppen, 2, N_simple_pendulum_test, -pi, 0) ≈ ellipk(1/2)/sqrt(2.45)
 end
