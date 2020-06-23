@@ -2,3 +2,6 @@ name = "Integration"
 uuid = "fe4b9952-3d4b-4d9e-91cb-cb7c9af2aa80"
 authors = ["Brenton Horne <brentonhorne77 at gmail dot com>"]
 version = "0.1.0"
+
+[deps]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
