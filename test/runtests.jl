@@ -1,6 +1,5 @@
-import Pkg;
-Pkg.add("Test")
-using Integration, Test
+using Integration
+using Test
 
 function f(x)
     exp.(-x.^2)
