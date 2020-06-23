@@ -17,11 +17,17 @@ end
 # Simple pendulum test
 N_simple_pendulum_test1 = 100;
 N_simple_pendulum_test2 = 10000;
+simppen_analytical = ellipk(1/2)/sqrt(2.45); 
 function simppen(x)
     (-19.6*sin.(x)).^(-0.5)
 end
 
 @testset "Simple pendulum" begin
-    @test chebyshev_quadrature(simppen, 1, N_simple_pendulum_test1, -pi, 0) ≈ ellipk(1/2)/sqrt(2.45)
-    @test abs(chebyshev_quadrature(simppen, 2, N_simple_pendulum_test2, -pi, 0) - ellipk(1/2)/sqrt(2.45)) < 1e-3
+    # Singularities exist at the endpoints so Simpson's & the trapezoidal rule cannot start and end at them exactly
+    @test abs(simpsons(simppen, 100000000, -pi+1e-8, -1e-8) - simppen_analytical) < 1e-4
+    @test abs(trapezoidal(simppen, 100000000, -pi+1e-8, -1e-8) - simppen_analytical) < 1e-4
+    @test abs(legendre_quadrature(simppen, 100000000, -pi, 0) - simppen_analytical) < 1e-4
+    @test chebyshev_quadrature(simppen, 1, N_simple_pendulum_test1, -pi, 0) ≈ simppen_analytical
+    # Can't use ≈ for the 2nd Chebyshev quadrature as there's too much error in its estimate for that to work
+    @test abs(chebyshev_quadrature(simppen, 2, N_simple_pendulum_test2, -pi, 0) - simppen_analytical) < 1e-3
 end
