@@ -9,4 +9,4 @@ This package provides the following functions:
 * `simpsons(f, N, a, b)`
 * `trapezoidal(f, N, a, b)`
 
-use Julia's help function to find out usage information, should you need it. Out of these, I personally recommend you use `simpsons` when you're unsure which to use, as it nearly always gives an approximately accurate result, whilst the two `_quadrature` functions sometimes do not (in fact, they sometimes converge on an answer that is incredibly inaccurate, see [test/runtests.jl#L59](test/runtests.jl#L59) for an example function for which this is the case).
+use Julia's help function to find out usage information, should you need it.

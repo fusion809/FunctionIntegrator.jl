@@ -39,11 +39,17 @@ end
     @test abs(chebyshev_quadrature(x -> x.^(-1), 2, 1000, 1, exp(1))-1) < 1e-5
 end
 
+function cos_cot_fn(x)
+    (cos.(x).^2).*(cot.(x).+1.0).^(-1)
+end
+
 # test an unusual trig integral
 @testset "cos_cot_integral" begin
-    @test simpsons(x -> (cos.(x).^2)/(1+cot.(x)), 10000, 0, pi/2) ≈ 0.25
-    @test trapezoidal(x -> (cos.(x).^2)/(1+cot.(x)), 10000, 0, pi/2) ≈ 0.25
-    # No Gaussian quadrature tests as they fail miserably and give results close to 0
+    @test simpsons(cos_cot_fn, 10000, 0, pi/2) ≈ 0.25
+    @test trapezoidal(cos_cot_fn, 10000, 0, pi/2) ≈ 0.25
+    @test legendre_quadrature(cos_cot_fn, 10000, 0, pi/2) ≈ 0.25
+    @test chebyshev_quadrature(cos_cot_fn, 1, 10000, 0, pi/2) ≈ 0.25
+    @test chebyshev_quadrature(cos_cot_fn, 2, 10000, 0, pi/2) ≈ 0.25
 end
 
 @testset "log(x)/x" begin
@@ -56,13 +62,14 @@ end
 
 # Test 7
 function test_7(x)
-    ((x.^3).+1.0)/((x.^4).*(x.+1.0).*((x.^2).+1.0))
+    ((x.^3).+1.0).*((x.^4).*(x.+1.0).*((x.^2).+1.0)).^(-1)
 end
 sol_7 = log(sqrt(2)*exp(1)/(sqrt(exp(2)+1)))+1/2*(exp(-2)-1)+1/3*(1-exp(-3));
 
 @testset "(x^3+1)/((x^4)(x+1)(x^2+1))" begin
     @test simpsons(test_7, 10000, 1, exp(1)) ≈ sol_7
     @test trapezoidal(test_7, 100000, 1, exp(1)) ≈ sol_7
-    # Quadrature methods fail miserably at approximating the answer to this
-    # problem
+    @test legendre_quadrature(test_7, 10000, 1, exp(1)) ≈ sol_7
+    @test chebyshev_quadrature(test_7, 1, 10000, 1, exp(1)) ≈ sol_7
+    @test chebyshev_quadrature(test_7, 2, 100000, 1, exp(1)) ≈ sol_7
 end
