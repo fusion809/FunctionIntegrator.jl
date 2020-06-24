@@ -9,7 +9,7 @@ and otherwise approximates the integral:
 
 ``\\displaystyle \\int_{-\\infty}^{\\infty} f(x) dx``
 
-in both instances it uses Gauss-Hermite quadrature to make this approximation. ``N`` quadrature nodes are used in this approximation.
+in both instances it uses [Gauss-Hermite quadrature](https://en.wikipedia.org/wiki/Chebyshev-Hermite_quadrature) to make this approximation. ``N`` quadrature nodes are used in this approximation.
 """
 function hermite_quadrature(f::Function, N::Number, k::Integer=1)
     N = convert(Int64, N);

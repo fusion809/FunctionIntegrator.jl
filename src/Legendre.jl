@@ -1,7 +1,7 @@
 """
     legendre_quadrature(f::Function, N::Number, a::Number, b::Number)
 
-Uses [Legendre-Gauss quadrature](https://mathworld.wolfram.com/Legendre-GaussQuadrature.html) to approximate:
+Uses [Legendre-Gauss quadrature](https://en.wikipedia.org/wiki/Gauss-Legendre_quadrature) to approximate:
 
 ``\\displaystyle \\int_a^b f(x) dx``.
 

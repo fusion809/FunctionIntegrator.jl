@@ -1,7 +1,7 @@
 """
     radau_quadrature(f::Function, N::Number, a::Number, b::Number)
 
-uses Gauss-Legendre-Radau quadrature to approximate:
+uses [Radau quadrature](https://mathworld.wolfram.com/RadauQuadrature.html) to approximate:
 
 ``\\displaystyle \\int_a^b f(x) dx.``
 

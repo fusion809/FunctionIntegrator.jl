@@ -1,7 +1,7 @@
 """
     lobatto_quadrature(f::Function, N::Number, a::Number, b::Number)
 
-uses Gauss-Lobatto quadrature to approximate:
+uses [Gauss-Lobatto quadrature](https://en.wikipedia.org/wiki/Gaussian_quadrature#Gauss%E2%80%93Lobatto_rules) to approximate:
 
 ``\\displaystyle \\int_a^b f(x) dx.``
 

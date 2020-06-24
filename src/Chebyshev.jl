@@ -1,7 +1,7 @@
 """
     chebyshev_quadrature(f::Function, N::Number, k::Integer, a::Number, b::Number)
 
-Uses Chebyshev-Gauss quadrature to approximate the integral:
+uses [Chebyshev-Gauss quadrature](https://en.wikipedia.org/wiki/Chebyshev-Gauss_quadrature) to approximate the integral:
 
 ``\\displaystyle\\int_a^b f(x) dx``.
 

@@ -9,7 +9,7 @@ end
 """
     trapezoidal(f::Function, N::Number, a::Number, b::Number)
 
-Uses the [trapezoidal rule](https://mathworld.wolfram.com/TrapezoidalRule.html) to approximate:
+uses the [trapezoidal rule](https://en.wikipedia.org/wiki/Trapezoidal_rule) to approximate:
 
 ``\\displaystyle\\int_a^b f(x) dx``.
 

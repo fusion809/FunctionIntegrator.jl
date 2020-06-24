@@ -1,7 +1,7 @@
 """
     jacobi_quadrature(f::Function, N::Number, α::Number, β::Number, a::Number, b::Number)
 
-uses Gauss-Jacobi quadrature to approximate:
+uses [Gauss-Jacobi quadrature](https://en.wikipedia.org/wiki/Gauss-Jacobi_quadrature) to approximate:
 
 ``\\displaystyle \\int_a^b f(x) dx.``
 
