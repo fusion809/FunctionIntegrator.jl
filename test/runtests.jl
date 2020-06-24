@@ -1,4 +1,4 @@
-using Integration, SpecialFunctions, Test
+using FunctionIntegrator, SpecialFunctions, Test
 
 include("gaussian.jl")
 include("simppen.jl")
