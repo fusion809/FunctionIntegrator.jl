@@ -11,7 +11,7 @@ end
 """
     simpsons(f::Function, N::Number, a::Number, b::Number)
 
-uses [Simpson's rule](http://mathworld.wolfram.com/SimpsonsRule.html) to approximate:
+uses [Simpson's rule](https://en.wikipedia.org/wiki/Simpson%27s_rule) to approximate:
 
 ``\\displaystyle\\int_a^b f(x) dx``.
 
