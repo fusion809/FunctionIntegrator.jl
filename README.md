@@ -6,6 +6,7 @@ This package should be treated as a second-rate alternative to the excellent [Qu
 This package provides the following functions:
 
 * `chebyshev_quadrature(f, k, N, a, b)`
+* `hermite_quadrature(f, N, k)`
 * `laguerre_quadrature(f, N, k)`
 * `legendre_quadrature(f, N, a, b)`
 * `rectangle(f, N, a, b)`
