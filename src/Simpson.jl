@@ -9,13 +9,13 @@ function stepwise_simpsons(f, h, x, i, N)
 end
 
 """
-    simpsons(f, N, a, b)
+    simpsons(f::Function, N::Number, a::Number, b::Number)
 
 Uses [Simpson's rule](http://mathworld.wolfram.com/SimpsonsRule.html) to approximate:
 
 ``\\displaystyle\\int_a^b f(x) dx``.
 
-``N+1`` steps are used, if endpoints are included. 
+``N+1`` steps are used, if endpoints are included.
 """
 function simpsons(f, N, a, b)
     N = convert(Int64, N);
