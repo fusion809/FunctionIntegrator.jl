@@ -3,7 +3,7 @@
 
 uses Gauss-Jacobi quadrature to approximate:
 
-``\\int_a^b f(x) dx.``
+``\\displaystyle \\int_a^b f(x) dx.``
 
 The remaining inputs of this function are:
 * ``N``, which refers to the number of nodes used in the quadrature.

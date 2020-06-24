@@ -10,6 +10,8 @@ This package provides the following functions:
 * `jacobi_quadrature(f, N, α, β, a, b)`
 * `laguerre_quadrature(f, N, k)`
 * `legendre_quadrature(f, N, a, b)`
+* `lobatto_quadrature(f, N, a, b)`
+* `radau_quadrature(f, N, a, b)`
 * `rectangle(f, N, a, b)`
 * `simpsons(f, N, a, b)`
 * `trapezoidal(f, N, a, b)`
