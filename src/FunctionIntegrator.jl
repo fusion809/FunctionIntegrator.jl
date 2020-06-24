@@ -1,4 +1,4 @@
-module Integration
+module FunctionIntegrator
 
 using FastGaussQuadrature
 
