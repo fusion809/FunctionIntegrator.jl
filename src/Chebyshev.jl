@@ -1,3 +1,5 @@
+using FastGaussQuadrature;
+
 """
     chebyshev_quadrature(f::Function, k::Integer, N::Number, a::Number, b::Number)
 
@@ -11,23 +13,20 @@ Uses Chebyshev-Gauss quadrature to approximate the integral:
 """
 function chebyshev_quadrature(f::Function, k::Integer, N::Number, a::Number, b::Number)
     N = convert(Int64, N);
-    n = 1:1:N;
+    zeros, weights = gausschebyshev(N, k);
     if k == 2
         # Grid
-        x = -cos.(pi*n./(N+1));
         # Linear transformation of the original integration interval [-1,1]
         # to [a,b]
-        u = ((b-a)/2)*x.+(a+b)/2;
+        u = ((b-a)/2)*zeros.+(a+b)/2;
         # weights are pi/(N+1)*sin^2(pi*n/(N+1)), which equals
         # pi/(N+1)*(1-x^2)
-        int = ((b-a)*pi)/(2*(N+1))*sum((sqrt.((-x.^2).+1)).*f.(u));
+        int = (b-a)/2*sum(weights.*f.(u).*(sqrt.((-zeros.^2).+1)).^(-1));
     elseif k == 1
-        # Grid
-        x = -cos.(((2*n.-1)*pi)/(2*N));
         # Linear transformation of the original integration interval [-1,1]
         # to [a,b]
-        u = ((b-a)/2)*x.+(a+b)/2;
-        int = (((b-a)*pi)/(2*N))*sum((sqrt.((-x.^2).+1)).*f.(u));
+        u = ((b-a)/2)*zeros.+(a+b)/2;
+        int = (b-a)/2*sum(weights.*(sqrt.((-zeros.^2).+1)).*f.(u));
     end
     return int
 end
