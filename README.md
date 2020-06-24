@@ -5,8 +5,9 @@ This package should be treated as a second-rate alternative to the excellent [Qu
 
 This package provides the following functions:
 
-* `chebyshev_quadrature(f, k, N, a, b)`
+* `chebyshev_quadrature(f, N, k, a, b)`
 * `hermite_quadrature(f, N, k)`
+* `jacobi_quadrature(f, N, α, β, a, b)`
 * `laguerre_quadrature(f, N, k)`
 * `legendre_quadrature(f, N, a, b)`
 * `rectangle(f, N, a, b)`
@@ -22,4 +23,4 @@ pkg> add git://github.com/fusion809/Integration.jl.git
 ```
 
 ## Acknowledgements
-I'd like to thank the Julia discourse community for their generous help through my Julia journey, and I would also like to thank the developers of  Julia, as without their work this package would not be possible. Likewise, I'd also like to thank the developers of [FastGaussQuadrature.jl](https://github.com/JuliaApproximation/FastGaussQuadrature.jl), as without their efficient algorithms for finding the nodes and weights for various Gaussian quadrature techniques, several of the functions in this repository would be far less efficient (especially `legendre_quadrature`), or may not even exist. I'd also like to thank the developers of [SpecialFunctions.jl](https://github.com/JuliaMath/SpecialFunctions.jl), as some of their functions are useful for testing the functions in this package.
+I'd like to thank the Julia discourse community for their generous help through my Julia journey, and I would also like to thank the developers of  Julia, as without their work this package would not even be possible (I know, obviously, as this is a Julia package). Likewise, I'd also like to thank the developers of [FastGaussQuadrature.jl](https://github.com/JuliaApproximation/FastGaussQuadrature.jl), as without their efficient algorithms for finding the nodes and weights for various Gaussian quadrature techniques, several of the functions in this repository would be far less efficient (especially `legendre_quadrature`), or may not even exist. I'd also like to thank the developers of [SpecialFunctions.jl](https://github.com/JuliaMath/SpecialFunctions.jl), as some of their functions are useful for testing the functions in this package.

@@ -1,5 +1,7 @@
 module Integration
 
+using FastGaussQuadrature
+
 export chebyshev_quadrature, hermite_quadrature, laguerre_quadrature, legendre_quadrature, rectangle, simpsons, trapezoidal
 
 include("Chebyshev.jl")

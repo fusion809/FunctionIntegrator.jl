@@ -1,5 +1,3 @@
-using FastGaussQuadrature
-
 """
     laguerre_quadrature(f::Function, N::Number, k::Integer=1)
 

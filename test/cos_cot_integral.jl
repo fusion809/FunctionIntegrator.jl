@@ -6,10 +6,10 @@ function cos_cot_fn(x)
 end
 
 @testset "cos_cot_integral" begin
-    @test rectangle(cos_cot_fn, 10000, 0, pi/2) ≈ 0.25
-    @test simpsons(cos_cot_fn, 10000, 0, pi/2) ≈ 0.25
-    @test trapezoidal(cos_cot_fn, 10000, 0, pi/2) ≈ 0.25
-    @test legendre_quadrature(cos_cot_fn, 10000, 0, pi/2) ≈ 0.25
-    @test chebyshev_quadrature(cos_cot_fn, 1, 10000, 0, pi/2) ≈ 0.25
-    @test chebyshev_quadrature(cos_cot_fn, 2, 10000, 0, pi/2) ≈ 0.25
+    @test rectangle(cos_cot_fn, 1e4, 0, pi/2) ≈ 0.25
+    @test simpsons(cos_cot_fn, 1e4, 0, pi/2) ≈ 0.25
+    @test trapezoidal(cos_cot_fn, 1e4, 0, pi/2) ≈ 0.25
+    @test legendre_quadrature(cos_cot_fn, 1e4, 0, pi/2) ≈ 0.25
+    @test chebyshev_quadrature(cos_cot_fn, 1e4, 1, 0, pi/2) ≈ 0.25
+    @test chebyshev_quadrature(cos_cot_fn, 1e4, 2, 0, pi/2) ≈ 0.25
 end

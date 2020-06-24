@@ -1,5 +1,3 @@
-using FastGaussQuadrature
-
 """
     legendre_quadrature(f::Function, N::Number, a::Number, b::Number)
 

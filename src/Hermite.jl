@@ -1,5 +1,3 @@
-using FastGaussQuadrature;
-
 """
     hermite_quadrature(f::Function, N::Number, k::Integer=1)
 
