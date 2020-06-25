@@ -1,8 +1,10 @@
 # Simple pendulum test
 @testset "Simppen" begin
     @test chebyshev_quadrature(x -> (-19.6*sin.(x)).^(-0.5), 6, 1, -pi, 0) ≈ ellipk(1/2)/sqrt(2.45)
-    # Can't use ≈ for the 2nd Chebyshev quadrature as there's too much error in its estimate for that to work
-    @test abs(chebyshev_quadrature(x -> (-19.6*sin.(x)).^(-0.5), 1e4, 2, -pi, 0) - ellipk(1/2)/sqrt(2.45)) < 1e-3
+    @test chebyshev_quadrature(x -> (-19.6*sin.(x)).^(-0.5), 7.6983761e7, 2, -pi, 0) ≈ ellipk(1/2)/sqrt(2.45)
+    @test chebyshev_quadrature(x -> (-19.6*sin.(x)).^(-0.5), 3.6425654e7, 3, -pi, 0) ≈ ellipk(1/2)/sqrt(2.45)
+    @test chebyshev_quadrature(x -> (-19.6*sin.(x)).^(-0.5), 5.0265982e7, 4, -pi, 0) ≈ ellipk(1/2)/sqrt(2.45)
+    # Tried up to N=1e7 without Jacobi coming close enough to the analytical solution, and it used a fair chunk of RAM at this N value
     @test abs(jacobi_quadrature(x -> (-19.6*sin.(x)).^(-0.5), 1e6, 1, 1, -pi, 0) - ellipk(1/2)/sqrt(2.45)) < 1e-5
     @test legendre_quadrature(x -> (-19.6*sin.(x)).^(-0.5), 4.3923464e7, -pi, 0) ≈ ellipk(1/2)/sqrt(2.45)
     @test abs(lobatto_quadrature(x -> (-19.6*sin.(x)).^(-0.5), 1e6, -pi+1e-6, -1e-6) - ellipk(1/2)/sqrt(2.45)) < 1e-3

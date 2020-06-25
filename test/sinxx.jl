@@ -8,6 +8,8 @@ sol_8 = 1.562225466889056293352345138804502677227824980541083456384;
 @testset "sinxx" begin
     @test chebyshev_quadrature(sinxx, 29645, 1, 0, 100) ≈ sol_8
     @test chebyshev_quadrature(sinxx, 41923, 2, 0, 100) ≈ sol_8
+    @test chebyshev_quadrature(sinxx, 42083, 3, 0, 100) ≈ sol_8
+    @test chebyshev_quadrature(sinxx, 29870, 4, 0, 100) ≈ sol_8
     @test jacobi_quadrature(sinxx, 65375, 1, 1, 0, 100) ≈ sol_8
     @test legendre_quadrature(sinxx, 37, 0, 100) ≈ sol_8
     @test lobatto_quadrature(sinxx, 38, 0, 100) ≈ sol_8

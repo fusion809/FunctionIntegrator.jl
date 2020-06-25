@@ -7,7 +7,7 @@ uses [Chebyshev-Gauss quadrature](https://en.wikipedia.org/wiki/Chebyshev-Gauss_
 
 `N` is the number of nodes (or grid points) used.
 
-`k` is the kind of the Chebyshev polynomial used in the quadrature. If ``k=2``, Chebyshev polynomials of the second kind ``U_n(x)`` are used; if ``k=1``, Chebyshev polynomials of the first kind ``T_n(x)`` are used.
+`k` is the kind of the Chebyshev polynomial used in the quadrature. If ``k=1``, Chebyshev polynomials of the first kind ``T_n(x)`` are used; if ``k=2``, Chebyshev polynomials of the second kind ``U_n(x)`` are used; if ``k=3``, Chebyshev polynomials of the third kind ``V_n(x)`` are used; and if ``k=4``, Chebyshev polynomials of the fourth kind ``W_n(x)`` are used.
 """
 function chebyshev_quadrature(f::Function, N::Number, k::Integer, a::Number, b::Number)
     N = convert(Int64, N);
@@ -25,8 +25,14 @@ function chebyshev_quadrature(f::Function, N::Number, k::Integer, a::Number, b::
         # to [a,b]
         u = ((b-a)/2)*zeros.+(a+b)/2;
         int = (b-a)/2*sum(weights.*(sqrt.((-zeros.^2).+1)).*f.(u));
+    elseif k==3
+        u = ((b-a)/2)*zeros.+(a+b)/2;
+        int = (b-a)/2*sum(weights.*sqrt.(((zeros.+1).^(-1)).*(-zeros.+1)).*f.(u));
+    elseif k==4
+        u = ((b-a)/2)*zeros.+(a+b)/2;
+        int = (b-a)/2*sum(weights.*sqrt.((zeros.+1).*(-zeros.+1).^(-1)).*f.(u));
     else
-        println("k must be either 1 or 2")
+        println("k must be 1, 2, 3 or 4")
     end
     return int
 end

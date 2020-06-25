@@ -7,6 +7,8 @@ sol_7 = log(sqrt(2)*exp(1)/(sqrt(exp(2)+1)))+1/2*(exp(-2)-1)+1/3*(1-exp(-3));
 @testset "test_7" begin
     @test chebyshev_quadrature(test_7, 8517, 1, 1, exp(1)) ≈ sol_7
     @test chebyshev_quadrature(test_7, 12043, 2, 1, exp(1)) ≈ sol_7
+    @test chebyshev_quadrature(test_7, 11823, 3, 1, exp(1)) ≈ sol_7
+    @test chebyshev_quadrature(test_7, 8202, 4, 1, exp(1)) ≈ sol_7
     @test jacobi_quadrature(test_7, 18779, 1, 1, 1, exp(1)) ≈ sol_7
     @test legendre_quadrature(test_7, 10, 1, exp(1)) ≈ sol_7
     @test lobatto_quadrature(test_7, 11, 1, exp(1)) ≈ sol_7

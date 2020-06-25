@@ -2,6 +2,8 @@
 @testset "Gaussian" begin
     @test chebyshev_quadrature(x -> exp.(-x.^2), 433, 1, -100, 100) ≈ sqrt(pi)
     @test chebyshev_quadrature(x -> exp.(-x.^2), 432, 2, -100, 100) ≈ sqrt(pi)
+    @test chebyshev_quadrature(x -> exp.(-x.^2), 216, 3, -100, 100) ≈ sqrt(pi)
+    @test chebyshev_quadrature(x -> exp.(-x.^2), 216, 4, -100, 100) ≈ sqrt(pi)
     @test hermite_quadrature(x -> 1.0, 1, 2) ≈ sqrt(pi)
     @test jacobi_quadrature(x -> exp.(-x.^2), 87019, 1, 1, -100, 100) ≈ sqrt(pi)
     # Laguerre integrates over [0, inf], so result must be

@@ -3,6 +3,8 @@ sol_9 = exp(1)*pi*erfc(1);
 @testset "expnx2datan" begin
     @test chebyshev_quadrature(x -> exp.(-x.^2).*(x.^2+1).^(-1), 1029, 1, -100, 100) ≈ sol_9
     @test chebyshev_quadrature(x -> exp.(-x.^2).*(x.^2+1).^(-1), 1028, 2, -100, 100) ≈ sol_9
+    @test chebyshev_quadrature(x -> exp.(-x.^2).*(x.^2+1).^(-1), 514, 3, -100, 100) ≈ sol_9
+    @test chebyshev_quadrature(x -> exp.(-x.^2).*(x.^2+1).^(-1), 514, 4, -100, 100) ≈ sol_9
     @test hermite_quadrature(x -> (x.^2+1).^(-1), 53, 2) ≈ sol_9
     @test jacobi_quadrature(x -> exp.(-x.^2).*(x.^2+1).^(-1), 1027, 1, 1, -100, 100) ≈ sol_9
     @test laguerre_quadrature(x -> 2*exp.(-x.^2).*(x.^2+1).^(-1), 55, 1) ≈ sol_9

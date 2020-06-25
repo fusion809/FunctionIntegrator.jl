@@ -2,6 +2,8 @@
 @testset "Cosine" begin
     @test chebyshev_quadrature(x -> cos.(x), 4656, 1, 0, pi/2) ≈ 1
     @test chebyshev_quadrature(x -> cos.(x), 6584, 2, 0, pi/2) ≈ 1
+    @test chebyshev_quadrature(x -> cos.(x), 6584, 3, 0, pi/2) ≈ 1
+    @test chebyshev_quadrature(x -> cos.(x), 4656, 4, 0, pi/2) ≈ 1
     @test jacobi_quadrature(x -> cos.(x), 10266, 1, 1, 0, pi/2) ≈ 1
     @test legendre_quadrature(x -> cos.(x), 5, 0, pi/2) ≈ 1
     @test lobatto_quadrature(x -> cos.(x), 6, 0, pi/2) ≈ 1
