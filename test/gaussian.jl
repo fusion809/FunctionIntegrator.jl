@@ -1,5 +1,5 @@
 # Gaussian curve test
-@testset "Gaussian curve" begin
+@testset "Gaussian" begin
     @test chebyshev_quadrature(x -> exp.(-x.^2), 433, 1, -100, 100) ≈ sqrt(pi)
     @test chebyshev_quadrature(x -> exp.(-x.^2), 432, 2, -100, 100) ≈ sqrt(pi)
     @test hermite_quadrature(x -> 1.0, 1, 2) ≈ sqrt(pi)

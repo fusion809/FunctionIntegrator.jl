@@ -1,5 +1,5 @@
 # Simple pendulum test
-@testset "Simple pendulum" begin
+@testset "Simppen" begin
     @test chebyshev_quadrature(x -> (-19.6*sin.(x)).^(-0.5), 6, 1, -pi, 0) ≈ ellipk(1/2)/sqrt(2.45)
     # Can't use ≈ for the 2nd Chebyshev quadrature as there's too much error in its estimate for that to work
     @test abs(chebyshev_quadrature(x -> (-19.6*sin.(x)).^(-0.5), 1e4, 2, -pi, 0) - ellipk(1/2)/sqrt(2.45)) < 1e-3

@@ -6,7 +6,7 @@ function dmodified_bessel_1(theta)
     2*x/pi*cosh(x*sin(theta))*(cos(theta))^2
 end
 
-@testset "modified_bessel_0" begin
+@testset "modbessel0" begin
     @test chebyshev_quadrature(dmodified_bessel_1, 4.942e3, 1, 0, pi/2) ≈ besseli(x,1)
     @test chebyshev_quadrature(dmodified_bessel_1, 6.987e3, 2, 0, pi/2) ≈ besseli(x,1)
     @test jacobi_quadrature(dmodified_bessel_1, 1.0896e4, 1, 1, 0, pi/2) ≈ besseli(x,1)

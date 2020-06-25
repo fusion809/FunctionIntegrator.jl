@@ -5,7 +5,7 @@ function cos_cot_fn(x)
     (cos.(x).^2).*(cot.(x).+1.0).^(-1)
 end
 
-@testset "cos_cot_integral" begin
+@testset "coscotint" begin
     @test chebyshev_quadrature(cos_cot_fn, 88, 1, 0, pi/2) ≈ 0.25
     @test chebyshev_quadrature(cos_cot_fn, 90, 2, 0, pi/2) ≈ 0.25
     @test jacobi_quadrature(cos_cot_fn, 5, 1, 1, 0, pi/2) ≈ 0.25
