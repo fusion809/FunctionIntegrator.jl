@@ -10,7 +10,7 @@ sol_7 = log(sqrt(2)*exp(1)/(sqrt(exp(2)+1)))+1/2*(exp(-2)-1)+1/3*(1-exp(-3));
     @test trapezoidal(test_7, 1e5, 1, exp(1)) ≈ sol_7
     @test jacobi_quadrature(test_7, 1e6, 1, 1, 1, exp(1)) ≈ sol_7
     @test legendre_quadrature(test_7, 1e4, 1, exp(1)) ≈ sol_7
-    @test lobatto_quadrature(test_7, 1e6, 1, exp(1)) ≈ sol_7
+    @test lobatto_quadrature(test_7, 1e5, 1, exp(1)) ≈ sol_7
     @test radau_quadrature(test_7, 1e6, 1, exp(1)) ≈ sol_7
     @test chebyshev_quadrature(test_7, 1e4, 1, 1, exp(1)) ≈ sol_7
     @test chebyshev_quadrature(test_7, 1e5, 2, 1, exp(1)) ≈ sol_7
