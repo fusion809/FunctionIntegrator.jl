@@ -21,7 +21,7 @@ use Julia's help function to find out usage information, should you need it.
 This package is not currently in Julia's official repositories, so to install it one has to run:
 
 ```julia
-pkg> add git://github.com/fusion809/Integration.jl.git
+pkg> add git://github.com/fusion809/FunctionIntegrator.jl.git
 ```
 
 ## Choice of function
