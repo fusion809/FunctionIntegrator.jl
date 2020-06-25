@@ -9,7 +9,7 @@ function stepwise_simpsons(f, h, x, i, N)
 end
 
 """
-    simpsons(f::Function, N::Number, a::Number, b::Number)
+    simpsons_rule(f::Function, N::Number, a::Number, b::Number)
 
 uses [Simpson's rule](https://en.wikipedia.org/wiki/Simpson%27s_rule) to approximate:
 
@@ -17,7 +17,7 @@ uses [Simpson's rule](https://en.wikipedia.org/wiki/Simpson%27s_rule) to approxi
 
 ``N+1`` steps are used, if endpoints are included.
 """
-function simpsons(f::Function, N::Number, a::Number, b::Number)
+function simpsons_rule(f::Function, N::Number, a::Number, b::Number)
     N = convert(Int64, N);
     h = (b-a)/N;
     y = 0;

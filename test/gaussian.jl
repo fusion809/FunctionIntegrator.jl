@@ -1,8 +1,8 @@
 # Gaussian curve test
 @testset "Gaussian curve" begin
-    @test rectangle(x -> exp.(-x.^2), 1e10, 0, 100) ≈ sqrt(pi)/2
-    @test simpsons(x -> exp.(-x.^2), 1e4, 0, 100) ≈ sqrt(pi)/2
-    @test trapezoidal(x -> exp.(-x.^2), 1e4, 0, 100) ≈ sqrt(pi)/2
+    @test rectangle_rule(x -> exp.(-x.^2), 1e10, 0, 100) ≈ sqrt(pi)/2
+    @test simpsons_rule(x -> exp.(-x.^2), 1e4, 0, 100) ≈ sqrt(pi)/2
+    @test trapezoidal_rule(x -> exp.(-x.^2), 1e4, 0, 100) ≈ sqrt(pi)/2
     @test hermite_quadrature(x -> 1.0, 1e2, 2) ≈ sqrt(pi)
     @test jacobi_quadrature(x -> exp.(-x.^2), 1e5, 1, 1, 0, 100) ≈ sqrt(pi)/2
     @test laguerre_quadrature(x -> exp.(-x.^2), 1e2, 1) ≈ sqrt(pi)/2

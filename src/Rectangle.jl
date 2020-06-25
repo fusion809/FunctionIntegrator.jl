@@ -1,5 +1,5 @@
 """
-    rectangle(f::Function, N::Number, a::Number, b::Number)
+    rectangle_rule(f::Function, N::Number, a::Number, b::Number)
 
 numerically approximates:
 
@@ -7,7 +7,7 @@ numerically approximates:
 
 using the [rectangle rule](https://en.wikipedia.org/wiki/Riemann_sum#Left_Riemann_sum) with ``N+1`` steps (including the endpoints).
 """
-function rectangle(f::Function, N::Number, a::Number, b::Number)
+function rectangle_rule(f::Function, N::Number, a::Number, b::Number)
     N = convert(Int64, N);
     h = (b-a)/N;
     y = 0;

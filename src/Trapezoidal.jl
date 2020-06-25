@@ -7,7 +7,7 @@ function stepwise_trapezoidal(f, h, x, i, N)
 end
 
 """
-    trapezoidal(f::Function, N::Number, a::Number, b::Number)
+    trapezoidal_rule(f::Function, N::Number, a::Number, b::Number)
 
 uses the [trapezoidal rule](https://en.wikipedia.org/wiki/Trapezoidal_rule) to approximate:
 
@@ -15,7 +15,7 @@ uses the [trapezoidal rule](https://en.wikipedia.org/wiki/Trapezoidal_rule) to a
 
 ``N+1`` steps are used, if endpoints are included.
 """
-function trapezoidal(f::Function, N::Number, a::Number, b::Number)
+function trapezoidal_rule(f::Function, N::Number, a::Number, b::Number)
     N = convert(Int64, N);
     h = (b-a)/N;
     y = 0;

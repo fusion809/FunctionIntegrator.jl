@@ -6,9 +6,9 @@ function cos_cot_fn(x)
 end
 
 @testset "cos_cot_integral" begin
-    @test rectangle(cos_cot_fn, 1e4, 0, pi/2) ≈ 0.25
-    @test simpsons(cos_cot_fn, 1e4, 0, pi/2) ≈ 0.25
-    @test trapezoidal(cos_cot_fn, 1e4, 0, pi/2) ≈ 0.25
+    @test rectangle_rule(cos_cot_fn, 1e4, 0, pi/2) ≈ 0.25
+    @test simpsons_rule(cos_cot_fn, 1e4, 0, pi/2) ≈ 0.25
+    @test trapezoidal_rule(cos_cot_fn, 1e4, 0, pi/2) ≈ 0.25
     @test jacobi_quadrature(cos_cot_fn, 1e4, 1, 1, 0, pi/2) ≈ 0.25
     @test legendre_quadrature(cos_cot_fn, 1e4, 0, pi/2) ≈ 0.25
     @test lobatto_quadrature(cos_cot_fn, 1e4, 0, pi/2) ≈ 0.25
