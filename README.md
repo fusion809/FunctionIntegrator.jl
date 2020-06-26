@@ -6,16 +6,16 @@ This package should be treated as a second-rate alternative to the excellent [Qu
 
 This package provides the following functions:
 
-* `chebyshev_quadrature(f, N, k, a, b)`
-* `hermite_quadrature(f, N, k)`
-* `jacobi_quadrature(f, N, α, β, a, b)`
-* `laguerre_quadrature(f, N, k)`
-* `legendre_quadrature(f, N, a, b)`
-* `lobatto_quadrature(f, N, a, b)`
-* `radau_quadrature(f, N, a, b)`
-* `rectangle_rule(f, N, a, b)`
-* `simpsons_rule(f, N, a, b)`
-* `trapezoidal_rule(f, N, a, b)`
+* `chebyshev_quadrature(f::Function, N::Number, k::Integer, a::Number, b::Number)`
+* `hermite_quadrature(f::Function, N::Number, k::Integer)`
+* `jacobi_quadrature(f::Function, N::Number, α::Number, β::Number, a::Number, b::Number)`
+* `laguerre_quadrature(f::Function, N::Number, k::Integer)`
+* `legendre_quadrature(f::Function, N::Number, a::Number, b::Number)`
+* `lobatto_quadrature(f::Function, N::Number, a::Number, b::Number)`
+* `radau_quadrature(f::Function, N::Number, a::Number, b::Number)`
+* `rectangle_rule(f::Function, N::Number, a::Number, b::Number)`
+* `simpsons_rule(f::Function, N::Number, a::Number, b::Number)`
+* `trapezoidal_rule(f::Function, N::Number, a::Number, b::Number)`
 
 use Julia's help function (e.g. by typing `?chebyshev_quadrature`) to find out usage information, should you need it.
 

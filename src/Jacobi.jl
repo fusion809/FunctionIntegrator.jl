@@ -6,7 +6,7 @@ uses [Gauss-Jacobi quadrature](https://en.wikipedia.org/wiki/Gauss-Jacobi_quadra
 ``\\displaystyle \\int_a^b f(x) dx.``
 
 The remaining inputs of this function are:
-* ``N``, which refers to the number of nodes used in the quadrature.
+* ``N`` is the number of nodes (or grid points) used. Whilst the type mentioned in the function definition is just 'Number' (as opposed to 'Integer'), this is just so that scientific notation can be used to define it (as scientific notation gives the type 'Float64'), an error message will be printed if it is not a positive integer. 
 * ``α`` and ``β``, which are parameters of the weighting function.
 """
 function jacobi_quadrature(f::Function, N::Number, α::Number, β::Number, a::Number, b::Number)

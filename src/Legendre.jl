@@ -5,7 +5,7 @@ Uses [Legendre-Gauss quadrature](https://en.wikipedia.org/wiki/Gauss-Legendre_qu
 
 ``\\displaystyle \\int_a^b f(x) dx``.
 
-The argument `N` refers to the number of nodes used in the quadrature.
+``N`` is the number of nodes (or grid points) used. Whilst the type mentioned in the function definition is just 'Number' (as opposed to 'Integer'), this is just so that scientific notation can be used to define it (as scientific notation gives the type 'Float64'), an error message will be printed if it is not a positive integer. 
 """
 function legendre_quadrature(f::Function, N::Number, a::Number, b::Number)
     N = convert(Int64, N);

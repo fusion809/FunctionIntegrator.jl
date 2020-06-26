@@ -9,7 +9,9 @@ and otherwise approximates the integral:
 
 ``\\displaystyle \\int_{-\\infty}^{\\infty} f(x) dx``
 
-in both instances it uses [Gauss-Hermite quadrature](https://en.wikipedia.org/wiki/Chebyshev-Hermite_quadrature) to make this approximation. ``N`` quadrature nodes are used in this approximation.
+in both instances it uses [Gauss-Hermite quadrature](https://en.wikipedia.org/wiki/Chebyshev-Hermite_quadrature) to make this approximation.
+
+``N`` is the number of nodes (or grid points) used. Whilst the type mentioned in the function definition is just 'Number' (as opposed to 'Integer'), this is just so that scientific notation can be used to define it (as scientific notation gives the type 'Float64'), an error message will be printed if it is not a positive integer. 
 """
 function hermite_quadrature(f::Function, N::Number, k::Integer=1)
     N = convert(Int64, N);

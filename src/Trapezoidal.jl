@@ -13,7 +13,7 @@ uses the [trapezoidal rule](https://en.wikipedia.org/wiki/Trapezoidal_rule) to a
 
 ``\\displaystyle\\int_a^b f(x) dx``.
 
-``N+1`` steps are used, if endpoints are included.
+``N+1`` steps are used, if endpoints are included. Whilst the type mentioned in the function definition for ``N`` is just 'Number' (as opposed to 'Integer'), this is just so that scientific notation can be used to define it (as scientific notation gives the type 'Float64'), an error message will be printed if it is not a positive integer. 
 """
 function trapezoidal_rule(f::Function, N::Number, a::Number, b::Number)
     N = convert(Int64, N);
