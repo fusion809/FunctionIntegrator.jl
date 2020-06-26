@@ -1,4 +1,5 @@
-# test an unusual trig integral
+# Test how accurately the functions integrate an integral
+# that should equal I_1 (x)
 x = 1;
 function dmodified_bessel_1(theta)
     # ^(-1) is used instead of / as / produces a matrix instead of

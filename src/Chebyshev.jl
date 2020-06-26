@@ -7,7 +7,12 @@ uses [Chebyshev-Gauss quadrature](https://en.wikipedia.org/wiki/Chebyshev-Gauss_
 
 `N` is the number of nodes (or grid points) used.
 
-`k` is the kind of the Chebyshev polynomial used in the quadrature. If ``k=1``, Chebyshev polynomials of the first kind ``T_n(x)`` are used; if ``k=2``, Chebyshev polynomials of the second kind ``U_n(x)`` are used; if ``k=3``, Chebyshev polynomials of the third kind ``V_n(x)`` are used; and if ``k=4``, Chebyshev polynomials of the fourth kind ``W_n(x)`` are used.
+`k` determines the kind of the Chebyshev polynomial used in the quadrature. 
+
+* ``k=1`` uses Chebyshev polynomials of the first kind ``T_n(x)``.
+* ``k=2`` uses Chebyshev polynomials of the second kind ``U_n(x)``.
+* ``k=3`` uses Chebyshev polynomials of the third kind ``V_n(x)``.
+* ``k=4`` uses Chebyshev polynomials of the fourth kind ``W_n(x)``.
 """
 function chebyshev_quadrature(f::Function, N::Number, k::Integer, a::Number, b::Number)
     N = convert(Int64, N);
