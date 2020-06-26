@@ -25,7 +25,7 @@ This package is not currently in Julia's registries, so to install it one has to
 pkg> add git://github.com/fusion809/FunctionIntegrator.jl.git
 ```
 
-Although, a [pull request](https://github.com/JuliaRegistries/General/pull/16929) to add this package to the "General" registry is currently open, so hopefully soon this will no longer be necessary.
+Although, a [pull request](https://github.com/JuliaRegistries/General/pull/16929) to add this package to the ["General" registry](https://github.com/JuliaRegistries/General) is currently open, so hopefully soon this will no longer be necessary.
 
 ## Choice of function
 As a general rule of thumb, `simpsons_rule` should be the function you use when you're unsure which function to use as its approximations with large N (e.g. 1e8) are nearly always accurate to at least 6 digits. Despite this, for many problems some of the `_quadrature` functions may provide more accurate results with a far smaller N value. The main time when `simpsons_rule` should be avoided is when there are singularities at the endpoints of the domain of integration, in which case using `chebyshev_quadrature` with k=1 or using `legendre_quadrature` is likely best.

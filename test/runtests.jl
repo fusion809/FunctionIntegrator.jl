@@ -1,3 +1,5 @@
+# These tests are run in Travis CI:
+# https://travis-ci.com/github/fusion809/FunctionIntegrator.jl
 using FunctionIntegrator, SpecialFunctions, Test
 
 include("gaussian.jl")
@@ -12,3 +14,4 @@ include("airyai.jl")
 include("expnx2datan.jl")
 include("modbessel0.jl")
 include("sinexpox.jl")
+include("besselj.jl")

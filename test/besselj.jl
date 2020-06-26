@@ -1,0 +1,30 @@
+x = 2;
+function besselj_integrand(theta)
+    2/pi*sin(x*cos(theta))*cos(theta)
+end
+
+println("Performing the besselj test, where BesselJ_1(2) is approximated and the result is compared to the value obtained from SpecialFunctions' besselj function.")
+@testset "besselj" begin
+    println("Running: chebyshev_quadrature with k=1")
+    @time @test chebyshev_quadrature(besselj_integrand, 4665, 1, 0, pi/2) ≈ besselj(1,2)
+    println("Running: chebyshev_quadrature with k=2")
+    @time @test chebyshev_quadrature(besselj_integrand, 6596, 2, 0, pi/2) ≈ besselj(1,2)
+    println("Running: chebyshev_quadrature with k=3")
+    @time @test chebyshev_quadrature(besselj_integrand, 6596, 3, 0, pi/2) ≈ besselj(1,2)
+    println("Running: chebyshev_quadrature with k=4")
+    @time @test chebyshev_quadrature(besselj_integrand, 4664, 4, 0, pi/2) ≈ besselj(1,2)
+    println("Running: jacobi_quadrature with α=β=1")
+    @time @test jacobi_quadrature(besselj_integrand, 10285, 1, 1, 0, pi/2) ≈ besselj(1,2)
+    println("Running: legendre_quadrature")
+    @time @test legendre_quadrature(besselj_integrand, 8, 0, pi/2) ≈ besselj(1,2)
+    println("Running: lobatto_quadrature")
+    @time @test lobatto_quadrature(besselj_integrand, 9, 0, pi/2) ≈ besselj(1,2)
+    println("Running: radau_quadrature")
+    @time @test radau_quadrature(besselj_integrand, 8, 0, pi/2) ≈ besselj(1,2)
+    println("Running: rectangle_rule")
+    @time @test rectangle_rule(besselj_integrand, 52378763, 0, pi/2) ≈ besselj(1,2)
+    println("Running: simpsons_rule")
+    @time @test simpsons_rule(besselj_integrand, 6, 0, pi/2) ≈ besselj(1,2)
+    println("Running: trapezoidal_rule")
+    @time @test trapezoidal_rule(besselj_integrand, 4, 0, pi/2) ≈ besselj(1,2)
+end
