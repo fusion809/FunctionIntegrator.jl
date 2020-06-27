@@ -11,9 +11,11 @@ printstyled("Integrating e^(-x^2)/(1+x^2) on the infinite domain [-inf, inf], or
     @time @test chebyshev_quadrature(x -> exp.(-x.^2).*(x.^2+1).^(-1), 514, 3, -100, 100) ≈ sol_9
     printstyled("Running: chebyshev_quadrature with k=4\n"; color = :magenta)
     @time @test chebyshev_quadrature(x -> exp.(-x.^2).*(x.^2+1).^(-1), 514, 4, -100, 100) ≈ sol_9
+    printstyled("Running: hermite_quadrature with k=2\n"; color = :magenta)
     @time @test hermite_quadrature(x -> (x.^2+1).^(-1), 53, 2) ≈ sol_9
     printstyled("Running: jacobi_quadrature with α=β=1\n"; color = :magenta)
     @time @test jacobi_quadrature(x -> exp.(-x.^2).*(x.^2+1).^(-1), 1027, 1, 1, -100, 100) ≈ sol_9
+    printstyled("Running: laguerre_quadrature with k=1 and multiplying the result by 2 (as Laguerre is only on the semi-infinite domain).\n"; color = :magenta)
     @time @test laguerre_quadrature(x -> 2*exp.(-x.^2).*(x.^2+1).^(-1), 55, 1) ≈ sol_9
     printstyled("Running: legendre_quadrature\n"; color = :magenta)
     @time @test legendre_quadrature(x -> exp.(-x.^2).*(x.^2+1).^(-1), 1028, -100, 100) ≈ sol_9
