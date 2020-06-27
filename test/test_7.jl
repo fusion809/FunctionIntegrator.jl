@@ -1,30 +1,31 @@
 # Test 7
-function test_7(x)
+function partfrac(x)
     ((x.^3).+1.0).*((x.^4).*(x.+1.0).*((x.^2).+1.0)).^(-1)
 end
 sol_7 = log(sqrt(2)*exp(1)/(sqrt(exp(2)+1)))+1/2*(exp(-2)-1)+1/3*(1-exp(-3));
 
-@testset "test_7" begin
-    println("Running: chebyshev_quadrature with k=1")
-    @time @test chebyshev_quadrature(test_7, 8517, 1, 1, exp(1)) ≈ sol_7
-    println("Running: chebyshev_quadrature with k=2")
-    @time @test chebyshev_quadrature(test_7, 12043, 2, 1, exp(1)) ≈ sol_7
-    println("Running: chebyshev_quadrature with k=3")
-    @time @test chebyshev_quadrature(test_7, 11823, 3, 1, exp(1)) ≈ sol_7
-    println("Running: chebyshev_quadrature with k=4")
-    @time @test chebyshev_quadrature(test_7, 8202, 4, 1, exp(1)) ≈ sol_7
-    println("Running: jacobi_quadrature with α=β=1")
-    @time @test jacobi_quadrature(test_7, 18779, 1, 1, 1, exp(1)) ≈ sol_7
-    println("Running: legendre_quadrature")
-    @time @test legendre_quadrature(test_7, 10, 1, exp(1)) ≈ sol_7
-    println("Running: lobatto_quadrature")
-    @time @test lobatto_quadrature(test_7, 11, 1, exp(1)) ≈ sol_7
-    println("Running: radau_quadrature")
-    @time @test radau_quadrature(test_7, 10, 1, exp(1)) ≈ sol_7
-    println("Running: rectangle_rule; only a rough approximation can be practically achieved using this function.")
-    @time @test abs(rectangle_rule(test_7, 1e8, 1, exp(1)) - sol_7) < 1e-8
-    println("Running: simpsons_rule")
-    @time @test simpsons_rule(test_7, 200, 1, exp(1)) ≈ sol_7
-    println("Running: trapezoidal_rule")
-    @time @test trapezoidal_rule(test_7, 13983, 1, exp(1)) ≈ sol_7
+printstyled("Integrating (x^3+1)/(x^4 (x+1)(x^2+1)) from 1 to e and comparing the result to the analytical solution of log(sqrt(2)*exp(1)/(sqrt(exp(2)+1)))+1/2*(exp(-2)-1)+1/3*(1-exp(-3)).\n"; color = :red)
+@testset "partfrac" begin
+    printstyled("Running: chebyshev_quadrature with k=1\n"; color = :magenta)
+    @time @test chebyshev_quadrature(partfrac, 8517, 1, 1, exp(1)) ≈ sol_7
+    printstyled("Running: chebyshev_quadrature with k=2\n"; color = :magenta)
+    @time @test chebyshev_quadrature(partfrac, 12043, 2, 1, exp(1)) ≈ sol_7
+    printstyled("Running: chebyshev_quadrature with k=3\n"; color = :magenta)
+    @time @test chebyshev_quadrature(partfrac, 11823, 3, 1, exp(1)) ≈ sol_7
+    printstyled("Running: chebyshev_quadrature with k=4\n"; color = :magenta)
+    @time @test chebyshev_quadrature(partfrac, 8202, 4, 1, exp(1)) ≈ sol_7
+    printstyled("Running: jacobi_quadrature with α=β=1\n"; color = :magenta)
+    @time @test jacobi_quadrature(partfrac, 18779, 1, 1, 1, exp(1)) ≈ sol_7
+    printstyled("Running: legendre_quadrature\n"; color = :magenta)
+    @time @test legendre_quadrature(partfrac, 10, 1, exp(1)) ≈ sol_7
+    printstyled("Running: lobatto_quadrature\n"; color = :magenta)
+    @time @test lobatto_quadrature(partfrac, 11, 1, exp(1)) ≈ sol_7
+    printstyled("Running: radau_quadrature\n"; color = :magenta)
+    @time @test radau_quadrature(partfrac, 10, 1, exp(1)) ≈ sol_7
+    printstyled("Running: rectangle_rule; only a rough approximation can be practically achieved using this function.\n"; color = :magenta)
+    @time @test abs(rectangle_rule(partfrac, 1e8, 1, exp(1)) - sol_7) < 1e-8
+    printstyled("Running: simpsons_rule\n"; color = :magenta)
+    @time @test simpsons_rule(partfrac, 200, 1, exp(1)) ≈ sol_7
+    printstyled("Running: trapezoidal_rule\n"; color = :magenta)
+    @time @test trapezoidal_rule(partfrac, 13983, 1, exp(1)) ≈ sol_7
 end

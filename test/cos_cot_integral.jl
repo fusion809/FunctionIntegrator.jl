@@ -5,28 +5,28 @@ function cos_cot_fn(x)
     (cos.(x).^2).*(cot.(x).+1.0).^(-1)
 end
 
-println("Integrating cos^2(x)/(1+cot(x)) from 0 to pi/2 and comparing the results to the analytical result 0.25.")
+printstyled("Integrating cos^2(x)/(1+cot(x)) from 0 to pi/2 and comparing the results to the analytical result 0.25.\n"; color = :red)
 @testset "coscotint" begin
-    println("Running: chebyshev_quadrature with k=1")
+    printstyled("Running: chebyshev_quadrature with k=1\n"; color = :magenta)
     @time @test chebyshev_quadrature(cos_cot_fn, 88, 1, 0, pi/2) ≈ 0.25
-    println("Running: chebyshev_quadrature with k=2")
+    printstyled("Running: chebyshev_quadrature with k=2\n"; color = :magenta)
     @time @test chebyshev_quadrature(cos_cot_fn, 90, 2, 0, pi/2) ≈ 0.25
-    println("Running: chebyshev_quadrature with k=3")
+    printstyled("Running: chebyshev_quadrature with k=3\n"; color = :magenta)
     @time @test chebyshev_quadrature(cos_cot_fn, 91, 3, 0, pi/2) ≈ 0.25
-    println("Running: chebyshev_quadrature with k=4")
+    printstyled("Running: chebyshev_quadrature with k=4\n"; color = :magenta)
     @time @test chebyshev_quadrature(cos_cot_fn, 88, 4, 0, pi/2) ≈ 0.25
-    println("Running: jacobi_quadrature with α=β=1")
+    printstyled("Running: jacobi_quadrature with α=β=1\n"; color = :magenta)
     @time @test jacobi_quadrature(cos_cot_fn, 5, 1, 1, 0, pi/2) ≈ 0.25
-    println("Running: legendre_quadrature")
+    printstyled("Running: legendre_quadrature\n"; color = :magenta)
     @time @test legendre_quadrature(cos_cot_fn, 6, 0, pi/2) ≈ 0.25
-    println("Running: lobatto_quadrature")
+    printstyled("Running: lobatto_quadrature\n"; color = :magenta)
     @time @test lobatto_quadrature(cos_cot_fn, 7, 0, pi/2) ≈ 0.25
-    println("Running: radau_quadrature")
+    printstyled("Running: radau_quadrature\n"; color = :magenta)
     @time @test radau_quadrature(cos_cot_fn, 8, 0, pi/2) ≈ 0.25
-    println("Running: rectangle_rule")
+    printstyled("Running: rectangle_rule\n"; color = :magenta)
     @time @test rectangle_rule(cos_cot_fn, 7430, 0, pi/2) ≈ 0.25
-    println("Running: simpsons_rule")
+    printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(cos_cot_fn, 78, 0, pi/2) ≈ 0.25
-    println("Running: trapezoidal_rule")
+    printstyled("Running: trapezoidal_rule\n"; color = :magenta)
     @time @test trapezoidal_rule(cos_cot_fn, 7430, 0, pi/2) ≈ 0.25
 end

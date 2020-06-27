@@ -5,28 +5,28 @@ end
 
 sol_8 = 1.562225466889056293352345138804502677227824980541083456384;
 
-println("Integrating sin(x)/x from 0 to 100 and comparing it to the exact result.")
+printstyled("Integrating sin(x)/x from 0 to 100 and comparing it to the exact result.\n"; color = :red)
 @testset "sinxx" begin
-    println("Running: chebyshev_quadrature with k=1")
+    printstyled("Running: chebyshev_quadrature with k=1\n"; color = :magenta)
     @time @test chebyshev_quadrature(sinxx, 29645, 1, 0, 100) ≈ sol_8
-    println("Running: chebyshev_quadrature with k=2")
+    printstyled("Running: chebyshev_quadrature with k=2\n"; color = :magenta)
     @time @test chebyshev_quadrature(sinxx, 41923, 2, 0, 100) ≈ sol_8
-    println("Running: chebyshev_quadrature with k=3")
+    printstyled("Running: chebyshev_quadrature with k=3\n"; color = :magenta)
     @time @test chebyshev_quadrature(sinxx, 42083, 3, 0, 100) ≈ sol_8
-    println("Running: chebyshev_quadrature with k=4")
+    printstyled("Running: chebyshev_quadrature with k=4\n"; color = :magenta)
     @time @test chebyshev_quadrature(sinxx, 29870, 4, 0, 100) ≈ sol_8
-    println("Running: jacobi_quadrature with α=β=1")
+    printstyled("Running: jacobi_quadrature with α=β=1\n"; color = :magenta)
     @time @test jacobi_quadrature(sinxx, 65375, 1, 1, 0, 100) ≈ sol_8
-    println("Running: legendre_quadrature")
+    printstyled("Running: legendre_quadrature\n"; color = :magenta)
     @time @test legendre_quadrature(sinxx, 37, 0, 100) ≈ sol_8
-    println("Running: lobatto_quadrature")
+    printstyled("Running: lobatto_quadrature\n"; color = :magenta)
     @time @test lobatto_quadrature(sinxx, 38, 0, 100) ≈ sol_8
-    println("Running: radau_quadrature")
+    printstyled("Running: radau_quadrature\n"; color = :magenta)
     @time @test radau_quadrature(sinxx, 38, 0, 100) ≈ sol_8
-    println("Running: rectangle_rule")
+    printstyled("Running: rectangle_rule\n"; color = :magenta)
     @time @test abs(rectangle_rule(sinxx, 1e8, 0, 100) - sol_8) < 1e-6
-    println("Running: simpsons_rule")
+    printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(sinxx, 678, 0, 100) ≈ sol_8
-    println("Running: trapezoidal_rule")
+    printstyled("Running: trapezoidal_rule\n"; color = :magenta)
     @time @test trapezoidal_rule(sinxx, 17622, 0, 100) ≈ sol_8
 end
