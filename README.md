@@ -1,6 +1,6 @@
 # FunctionIntegrator.jl
 ![Travis](https://travis-ci.com/fusion809/FunctionIntegrator.jl.svg?branch=master)
-![CompatHelper](https://github.com/fusion809/FunctionIntegrator.jl/workflows/CompatHelper/badge.svg?event=push)
+![CompatHelper](https://github.com/fusion809/FunctionIntegrator.jl/workflows/CompatHelper/badge.svg)
 
 Due to [Franklin.jl](https://github.com/tlienart/Franklin.jl)'s superior mathematics typesetting support (relative to plain GitHub-flavoured markdown), I have decided to move the README of this package to my Franklin-powered website, https://fusion809.github.io/FunctionIntegrator/.
 
