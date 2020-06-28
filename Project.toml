@@ -1,7 +1,7 @@
 name = "FunctionIntegrator"
 uuid = "7685536e-2581-4f83-bef1-2ba363c9cb91"
 authors = ["Brenton Horne <brentonhorne77@gmail.com>"]
-version = "0.2.0"
+version = "0.2.1"
 
 [deps]
 FastGaussQuadrature = "442a2c76-b920-505d-bb47-c5924d526838"
