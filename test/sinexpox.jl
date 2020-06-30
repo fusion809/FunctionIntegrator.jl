@@ -9,7 +9,7 @@ function sinexpox(x)
     end
 end
 
-printstyled("Integrating sin(x^2)e^(-x)/x from 0 to infinity, with the approximated domain of integration of 0 to 100. Integrand function has been adjusted so that the singularity at x=0 no longer exists.\n"; color = :red)
+printstyled("Integrating sin(x^2)e^(-x)/x from 0 to infinity, with the approximated domain of integration of 0 to 100. The removable singularity at x=0 in the integrand has been removed.\n"; color = :red)
 @testset "sinexpox" begin
     printstyled("Running: chebyshev_quadrature with k=1\n"; color = :magenta)
     @time @test chebyshev_quadrature(sinexpox, 655, 1, 0, 100) ≈ sol_11
