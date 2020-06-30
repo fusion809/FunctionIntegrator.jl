@@ -29,8 +29,12 @@ printstyled("Integrating sin(x^2)e^(-x)/x from 0 to infinity, with the approxima
     @time @test lobatto_quadrature(sinexpox, 598, 0, 100) ≈ sol_11
     printstyled("Running: radau_quadrature\n"; color = :magenta)
     @time @test radau_quadrature(sinexpox, 498, 0, 100) ≈ sol_11
-    printstyled("Running: rectangle_rule\n"; color = :magenta)
-    @time @test rectangle_rule(sinexpox, 394538, 0, 100) ≈ sol_11
+    printstyled("Running: rectangle_rule_left\n"; color = :magenta)
+    @time @test rectangle_rule_left(sinexpox, 394538, 0, 100) ≈ sol_11
+    printstyled("Running: rectangle_rule_midpoint\n"; color = :magenta)
+    @time @test rectangle_rule_midpoint(sinexpox, 278981, 0, 100) ≈ sol_11
+    printstyled("Running: rectangle_rule_right\n"; color = :magenta)
+    @time @test rectangle_rule_right(sinexpox, 394538, 0, 100) ≈ sol_11
     printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(sinexpox, 4201, 0, 100) ≈ sol_11
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)

@@ -22,8 +22,12 @@ printstyled("Integrating (x^3+1)/(x^4 (x+1)(x^2+1)) from 1 to e and comparing th
     @time @test lobatto_quadrature(partfrac, 11, 1, exp(1)) ≈ sol_7
     printstyled("Running: radau_quadrature\n"; color = :magenta)
     @time @test radau_quadrature(partfrac, 10, 1, exp(1)) ≈ sol_7
-    printstyled("Running: rectangle_rule; only a rough approximation can be practically achieved using this function.\n"; color = :magenta)
-    @time @test abs(rectangle_rule(partfrac, 1e8, 1, exp(1)) - sol_7) < 1e-8
+    printstyled("Running: rectangle_rule_left; only a rough approximation can be practically achieved using this function.\n"; color = :magenta)
+    @time @test abs(rectangle_rule_left(partfrac, 1e8, 1, exp(1)) - sol_7) < 1e-8
+    printstyled("Running: rectangle_rule_midpoint\n"; color = :magenta)
+    @time @test rectangle_rule_midpoint(partfrac, 9887, 1, exp(1)) ≈ sol_7
+    printstyled("Running: rectangle_rule_right; only a rough approximation can be practically achieved using this function.\n"; color = :magenta)
+    @time @test abs(rectangle_rule_right(partfrac, 1e8, 1, exp(1)) - sol_7) < 1e-8
     printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(partfrac, 200, 1, exp(1)) ≈ sol_7
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)

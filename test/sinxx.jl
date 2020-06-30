@@ -23,8 +23,12 @@ printstyled("Integrating sin(x)/x from 0 to 100 and comparing it to the exact re
     @time @test lobatto_quadrature(sinxx, 38, 0, 100) ≈ sol_8
     printstyled("Running: radau_quadrature\n"; color = :magenta)
     @time @test radau_quadrature(sinxx, 38, 0, 100) ≈ sol_8
-    printstyled("Running: rectangle_rule\n"; color = :magenta)
-    @time @test abs(rectangle_rule(sinxx, 1e8, 0, 100) - sol_8) < 1e-6
+    printstyled("Running: rectangle_rule_left; only a rough approximation can be practically achieved using this function\n"; color = :magenta)
+    @time @test abs(rectangle_rule_left(sinxx, 1e8, 0, 100) - sol_8) < 5.036e-7
+    printstyled("Running: rectangle_rule_midpoint\n"; color = :magenta)
+    @time @test rectangle_rule_midpoint(sinxx, 12461, 0, 100) ≈ sol_8
+    printstyled("Running: rectangle_rule_right; only a rough approximation can be practically achieved using this function\n"; color = :magenta)
+    @time @test abs(rectangle_rule_right(sinxx, 1e8, 0, 100) - sol_8) < 5.015e-7
     printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(sinxx, 678, 0, 100) ≈ sol_8
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)

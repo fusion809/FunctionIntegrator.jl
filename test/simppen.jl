@@ -19,8 +19,12 @@ printstyled("Integrating 1/sqrt(-19.6 sin(x)) from -pi to 0 and comparing the re
     @time @test abs(lobatto_quadrature(x -> (-19.6*sin.(x)).^(-0.5), 1e6, -pi+1e-6, -1e-6) - ellipk(1/2)/sqrt(2.45)) < 1e-3
     printstyled("Running: radau_quadrature on [-pi+1e-6, -1e-6]. Only a rough approximation can be realistically achieved with this function, partly due to the singularities.\n"; color = :magenta)
     @time @test abs(radau_quadrature(x -> (-19.6*sin.(x)).^(-0.5), 1e6, -pi+1e-6, -1e-6) - ellipk(1/2)/sqrt(2.45)) < 1e-3
-    printstyled("Running: rectangle_rule on [-pi+1e-8, -1e-8]. Only a rough approximation can be realistically achieved with this function, partly due to the singularities.\n"; color = :magenta)
-    @time @test abs(rectangle_rule(x -> (-19.6*sin.(x)).^(-0.5), 1e8, -pi+1e-8, -1e-8) - ellipk(1/2)/sqrt(2.45)) < 1e-4
+    printstyled("Running: rectangle_rule_left on [-pi+1e-8, -1e-8]. Only a rough approximation can be realistically achieved with this function, partly due to the singularities.\n"; color = :magenta)
+    @time @test abs(rectangle_rule_left(x -> (-19.6*sin.(x)).^(-0.5), 1e8, -pi+1e-8, -1e-8) - ellipk(1/2)/sqrt(2.45)) < 1e-4
+    printstyled("Running: rectangle_rule_midpoint on [-pi+1e-8, -1e-8]. Only a rough approximation can be realistically achieved with this function, partly due to the singularities.\n"; color = :magenta)
+    @time @test abs(rectangle_rule_midpoint(x -> (-19.6*sin.(x)).^(-0.5), 1e8, -pi+1e-8, -1e-8) - ellipk(1/2)/sqrt(2.45)) < 1.01e-4
+    printstyled("Running: rectangle_rule_right on [-pi+1e-8, -1e-8]. Only a rough approximation can be realistically achieved with this function, partly due to the singularities.\n"; color = :magenta)
+    @time @test abs(rectangle_rule_right(x -> (-19.6*sin.(x)).^(-0.5), 1e8, -pi+1e-8, -1e-8) - ellipk(1/2)/sqrt(2.45)) < 8.649e-5
     printstyled("Running: simpsons_rule on [-pi+1e-8, -1e-8]. Only a rough approximation can be realistically achieved with this function, partly due to the singularities.\n"; color = :magenta)
     @time @test abs(simpsons_rule(x -> (-19.6*sin.(x)).^(-0.5), 1e8, -pi+1e-8, -1e-8) - ellipk(1/2)/sqrt(2.45)) < 1e-4
     printstyled("Running: trapezoidal_rule on [-pi+1e-8, -1e-8]. Only a rough approximation can be realistically achieved with this function, partly due to the singularities.\n"; color = :magenta)

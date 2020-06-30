@@ -23,8 +23,12 @@ printstyled("Integrating e^(-x^2)/(1+x^2) on the infinite domain [-inf, inf], or
     @time @test lobatto_quadrature(x -> exp.(-x.^2).*(x.^2+1).^(-1), 1029, -100, 100) ≈ sol_9
     printstyled("Running: radau_quadrature\n"; color = :magenta)
     @time @test radau_quadrature(x -> exp.(-x.^2).*(x.^2+1).^(-1), 669, -100, 100) ≈ sol_9
-    printstyled("Running: rectangle_rule\n"; color = :magenta)
-    @time @test rectangle_rule(x -> exp.(-x.^2).*(x.^2+1).^(-1), 655, -100, 100) ≈ sol_9
+    printstyled("Running: rectangle_rule_left\n"; color = :magenta)
+    @time @test rectangle_rule_left(x -> exp.(-x.^2).*(x.^2+1).^(-1), 655, -100, 100) ≈ sol_9
+    printstyled("Running: rectangle_rule_midpoint\n"; color = :magenta)
+    @time @test rectangle_rule_midpoint(x -> exp.(-x.^2).*(x.^2+1).^(-1), 655, -100, 100) ≈ sol_9
+    printstyled("Running: rectangle_rule_right\n"; color = :magenta)
+    @time @test rectangle_rule_right(x -> exp.(-x.^2).*(x.^2+1).^(-1), 655, -100, 100) ≈ sol_9
     printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(x -> exp.(-x.^2).*(x.^2+1).^(-1), 1233, -100, 100) ≈ sol_9
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)

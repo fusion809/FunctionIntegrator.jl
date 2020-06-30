@@ -17,8 +17,12 @@ printstyled("Integrating cosine from 0 to pi/2 and comparing the result to the a
     @time @test lobatto_quadrature(x -> cos.(x), 6, 0, pi/2) ≈ 1
     printstyled("Running: radau_quadrature\n"; color = :magenta)
     @time @test radau_quadrature(x -> cos.(x), 5, 0, pi/2) ≈ 1
-    printstyled("Running: rectangle_rule\n"; color = :magenta)
-    @time @test rectangle_rule(x -> cos.(x), 5.23705e7, 0, pi/2) ≈ 1
+    printstyled("Running: rectangle_rule_left\n"; color = :magenta)
+    @time @test rectangle_rule_left(x -> cos.(x), 5.23705e7, 0, pi/2) ≈ 1
+    printstyled("Running: rectangle_rule_midpoint\n"; color = :magenta)
+    @time @test rectangle_rule_midpoint(x -> cos.(x), 2627, 0, pi/2) ≈ 1
+    printstyled("Running: rectangle_rule_right\n"; color = :magenta)
+    @time @test rectangle_rule_right(x -> cos.(x), 5.2441522e7, 0, pi/2) ≈ 1
     printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(x -> cos.(x), 40, 0, pi/2) ≈ 1
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)
