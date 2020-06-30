@@ -2,7 +2,7 @@
 function cos_cot_fn(x)
     # ^(-1) is used instead of / as / produces a matrix instead of
     # a vector
-    (cos.(x).^2).*(cot.(x).+1.0).^(-1)
+    (cos(x)^2)*(cot(x)+1.0)^(-1)
 end
 
 printstyled("Integrating cos^2(x)/(1+cot(x)) from 0 to pi/2 and comparing the results to the analytical result 0.25.\n"; color = :red)

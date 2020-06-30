@@ -1,10 +1,10 @@
 # Test 7
 function partfrac(x)
-    ((x.^3).+1.0).*((x.^4).*(x.+1.0).*((x.^2).+1.0)).^(-1)
+    (x^3+1.0)/((x^4)*(x+1.0)*(x^2+1.0))
 end
 sol_7 = log(sqrt(2)*exp(1)/(sqrt(exp(2)+1)))+1/2*(exp(-2)-1)+1/3*(1-exp(-3));
 
-printstyled("Integrating (x^3+1)/(x^4 (x+1)(x^2+1)) from 1 to e and comparing the result to the analytical solution of log(sqrt(2)*exp(1)/(sqrt(exp(2)+1)))+1/2*(exp(-2)-1)+1/3*(1-exp(-3)).\n"; color = :red)
+printstyled("Integrating (x^3+1)/(x^4 (x+1)(x^2+1)) from 1 to e and comparing the result to the analytical solution of log(sqrt(2)*exp(1)/(sqrt(exp(2)+1)))+1/2*(exp(-2)-1)+1/3*(1-exp(-3))\n"; color = :red)
 @testset "partfrac" begin
     printstyled("Running: chebyshev_quadrature with k=1\n"; color = :magenta)
     @time @test chebyshev_quadrature(partfrac, 8517, 1, 1, exp(1)) ≈ sol_7

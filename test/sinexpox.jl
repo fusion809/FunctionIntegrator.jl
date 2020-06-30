@@ -3,7 +3,7 @@ sol_11 = 0.359272044693256924031256924969591723070483991814349857046259912240119
 
 function sinexpox(x)
     if x!=0
-        sin.(x.^2)*exp.(-x).*x^(-1)
+        sin(x^2)*exp(-x)/x
     else
         0
     end
@@ -22,7 +22,7 @@ printstyled("Integrating sin(x^2)e^(-x)/x from 0 to infinity, with the approxima
     printstyled("Running: jacobi_quadrature with α=β=1\n"; color = :magenta)
     @time @test jacobi_quadrature(sinexpox, 598, 1, 1, 0, 100) ≈ sol_11
     printstyled("Running: laguerre_quadrature with k=2\n"; color = :magenta)
-    @time @test laguerre_quadrature(x -> sin.(x.^2).*x.^(-1), 4506, 2) ≈ sol_11
+    @time @test laguerre_quadrature(x -> sin(x^2)*x^(-1), 4506, 2) ≈ sol_11
     printstyled("Running: legendre_quadrature\n"; color = :magenta)
     @time @test legendre_quadrature(sinexpox, 611, 0, 100) ≈ sol_11
     printstyled("Running: lobatto_quadrature\n"; color = :magenta)
