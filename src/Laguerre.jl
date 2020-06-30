@@ -15,11 +15,11 @@ using [Gauss-Laguerre quadrature](https://en.wikipedia.org/wiki/Gauss-Laguerre_q
 """
 function laguerre_quadrature(f::Function, N::Number, k::Integer=1)
     N = convert(Int64, N);
-    zeros, weights = gausslaguerre(N);
+    nodes, weights = gausslaguerre(N);
     if k==1
-        int = sum(exp.(zeros).*f.(zeros).*weights);
+        int = sum(exp.(nodes).*f.(nodes).*weights);
     else
-        int = sum(f.(zeros).*weights);
+        int = sum(f.(nodes).*weights);
     end
     return int;
 end

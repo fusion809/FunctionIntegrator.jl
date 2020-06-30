@@ -11,9 +11,9 @@ The remaining inputs of this function are:
 """
 function jacobi_quadrature(f::Function, N::Number, α::Number, β::Number, a::Number, b::Number)
     N              = convert(Int64, N);
-    zeros, weights = gaussjacobi(N, α, β);
-    u              = (b-a)/2*zeros.+(a+b)/2;
-    int            = (b-a)/2*sum(weights.*f.(u).*(-zeros.+1.0).^(-α).*(zeros.+1.0).^(-β));
+    nodes, weights = gaussjacobi(N, α, β);
+    u              = (b-a)/2*nodes.+(a+b)/2;
+    int            = (b-a)/2*sum(weights.*f.(u).*(-nodes.+1.0).^(-α).*(nodes.+1.0).^(-β));
 
     return int
 end

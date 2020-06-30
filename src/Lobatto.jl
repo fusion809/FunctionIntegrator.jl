@@ -9,8 +9,8 @@ uses [Gauss-Lobatto quadrature](https://en.wikipedia.org/wiki/Gaussian_quadratur
 """
 function lobatto_quadrature(f::Function, N::Number, a::Number, b::Number)
     N = convert(Int64, N);
-    zeros, weights = gausslobatto(N);
-    u = (b-a)/2*zeros.+(a+b)/2;
+    nodes, weights = gausslobatto(N);
+    u = (b-a)/2*nodes.+(a+b)/2;
     int = (b-a)/2*sum(weights.*f.(u));
 
     return int

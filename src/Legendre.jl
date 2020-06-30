@@ -9,7 +9,7 @@ Uses [Legendre-Gauss quadrature](https://en.wikipedia.org/wiki/Gauss-Legendre_qu
 """
 function legendre_quadrature(f::Function, N::Number, a::Number, b::Number)
     N = convert(Int64, N);
-    zeros, weights = gausslegendre(N);
-    u = (b-a)/2*zeros.+(a+b)/2;
+    nodes, weights = gausslegendre(N);
+    u = (b-a)/2*nodes.+(a+b)/2;
     return (b-a)/2*sum(weights.*f.(u))
 end

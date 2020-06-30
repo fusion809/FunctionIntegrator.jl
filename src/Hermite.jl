@@ -15,11 +15,11 @@ in both instances it uses [Gauss-Hermite quadrature](https://en.wikipedia.org/wi
 """
 function hermite_quadrature(f::Function, N::Number, k::Integer=1)
     N = convert(Int64, N);
-    zeros, weights = gausshermite(N);
+    nodes, weights = gausshermite(N);
     if k==2
-        int = sum(weights.*f.(zeros));
+        int = sum(weights.*f.(nodes));
     else
-        int = sum(weights.*exp.(zeros.^2).*f.(zeros));
+        int = sum(weights.*exp.(nodes.^2).*f.(nodes));
     end
     return int
 end
