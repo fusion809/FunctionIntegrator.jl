@@ -5,9 +5,9 @@ uses [Chebyshev-Gauss quadrature](https://en.wikipedia.org/wiki/Chebyshev-Gauss_
 
 ``\\displaystyle\\int_a^b f(x) dx``.
 
-``N`` is the number of nodes (or grid points) used. Whilst the type mentioned in the function definition is just 'Number' (as opposed to 'Integer'), this is just so that scientific notation can be used to define it (as scientific notation gives the type 'Float64'), an error message will be printed if it is not a positive integer. 
+``N`` is the number of nodes (or grid points) used. Whilst the type mentioned in the function definition is just 'Number' (as opposed to 'Integer'), this is just so that scientific notation can be used to define it (as scientific notation gives the type 'Float64'), an error message will be printed if it is not a positive integer.
 
-`k` determines the kind of the Chebyshev polynomial used in the quadrature.
+``k`` determines the kind of the Chebyshev polynomial used in the quadrature.
 
 * ``k=1`` uses Chebyshev polynomials of the first kind ``T_n(x)``.
 * ``k=2`` uses Chebyshev polynomials of the second kind ``U_n(x)``.
