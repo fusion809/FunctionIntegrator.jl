@@ -30,7 +30,11 @@ printstyled("Integrate exp(-x^2) from minus infinity to positive infinity and co
     printstyled("Running: rectangle_rule_right\n"; color = :magenta)
     @time @test rectangle_rule_right(x -> exp(-x^2), 276, -100, 100) ≈ sqrt(pi)
     printstyled("Running: simpsons_rule\n"; color = :magenta)
-    @time @test simpsons_rule(x -> exp(-x^2), 533, -100, 100) ≈ sqrt(pi)
+    @time @test simpsons_rule(x -> exp(-x^2), 536, -100, 100) ≈ sqrt(pi)
+    printstyled("Running: simpsons38_rule\n"; color = :magenta)
+    @time @test simpsons38_rule(x -> exp(-x^2), 780, -100, 100) ≈ sqrt(pi)
+    printstyled("Running: adaptive_simpsons_rule with ε=1e-7\n"; color = :magenta)
+    @time @test adaptive_simpsons_rule(x -> exp(-x^2), -100, 100, 1e-7) ≈ sqrt(pi)
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)
     @time @test trapezoidal_rule(x -> exp(-x^2), 276, -100, 100) ≈ sqrt(pi)
 end

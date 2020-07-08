@@ -29,6 +29,10 @@ printstyled("Performing the besselj test, where BesselJ_1(2) is approximated and
     @time @test rectangle_rule_right(besselj_integrand, 52995612, 0, pi/2) ≈ besselj(1,2)
     printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(besselj_integrand, 6, 0, pi/2) ≈ besselj(1,2)
+    printstyled("Running: simpsons38_rule\n"; color = :magenta)
+    @time @test simpsons38_rule(besselj_integrand, 9, 0, pi/2) ≈ besselj(1,2)
+    printstyled("Running: adaptive_simpsons_rule with ε=1e-7\n"; color = :magenta)
+    @time @test adaptive_simpsons_rule(besselj_integrand, 0, pi/2, 1e-7) ≈ besselj(1,2)
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)
     @time @test trapezoidal_rule(besselj_integrand, 4, 0, pi/2) ≈ besselj(1,2)
 end

@@ -26,7 +26,11 @@ printstyled("Performing the Airy Ai(x) test, where Ai(x) is integrated on the se
     printstyled("Running: rectangle_rule_right. Only a rough approximation can be practically achieved using this function.\n"; color = :magenta)
     @time @test abs(rectangle_rule_right(x -> airyai(x), 1e8, 0, 100) - 1.0/3.0) < 1.775176824944687e-7
     printstyled("Running: simpsons_rule\n"; color = :magenta)
-    @time @test simpsons_rule(x -> airyai(x), 2511, 0, 100) ≈ 1.0/3.0
+    @time @test simpsons_rule(x -> airyai(x), 2512, 0, 100) ≈ 1.0/3.0
+    printstyled("Running: simpsons38_rule\n"; color = :magenta)
+    @time @test simpsons38_rule(x -> airyai(x), 3075, 0, 100) ≈ 1.0/3.0
+    printstyled("Running: adaptive_simpsons_rule\n"; color = :magenta)
+    @time @test adaptive_simpsons_rule(x -> airyai(x), 0, 100, 1e-8) ≈ 1.0/3.0
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)
     @time @test trapezoidal_rule(x -> airyai(x), 208381, 0, 100) ≈ 1.0/3.0
 end

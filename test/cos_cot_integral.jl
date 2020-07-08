@@ -31,6 +31,10 @@ printstyled("Integrating cos^2(x)/(1+cot(x)) from 0 to pi/2 and comparing the re
     @time @test rectangle_rule_right(cos_cot_fn, 7430, 0, pi/2) ≈ 0.25
     printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(cos_cot_fn, 78, 0, pi/2) ≈ 0.25
+    printstyled("Running: simpsons38_rule\n"; color = :magenta)
+    @time @test simpsons38_rule(cos_cot_fn, 96, 0, pi/2) ≈ 0.25
+    printstyled("Running: adaptive_simpsons_rule with ε=1e-7\n"; color = :magenta)
+    @time @test adaptive_simpsons_rule(cos_cot_fn, 0, pi/2, 1e-7) ≈ 0.25
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)
     @time @test trapezoidal_rule(cos_cot_fn, 7430, 0, pi/2) ≈ 0.25
 end

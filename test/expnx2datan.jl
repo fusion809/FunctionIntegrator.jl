@@ -30,7 +30,11 @@ printstyled("Integrating e^(-x^2)/(1+x^2) on the infinite domain [-inf, inf], or
     printstyled("Running: rectangle_rule_right\n"; color = :magenta)
     @time @test rectangle_rule_right(x -> exp(-x^2)/(x^2+1), 655, -100, 100) ≈ sol_9
     printstyled("Running: simpsons_rule\n"; color = :magenta)
-    @time @test simpsons_rule(x -> exp(-x^2)/(x^2+1), 1233, -100, 100) ≈ sol_9
+    @time @test simpsons_rule(x -> exp(-x^2)/(x^2+1), 1240, -100, 100) ≈ sol_9
+    printstyled("Running: simpsons38_rule\n"; color = :magenta)
+    @time @test simpsons38_rule(x -> exp(-x^2)/(x^2+1), 1767, -100, 100) ≈ sol_9
+    printstyled("Running: adaptive_simpsons_rule with ε=1e-7\n"; color = :magenta)
+    @time @test adaptive_simpsons_rule(x -> exp(-x^2)/(x^2+1), -100, 100, 1e-7) ≈ sol_9
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)
     @time @test trapezoidal_rule(x -> exp(-x^2)/(x^2+1), 655, -100, 100) ≈ sol_9
 end

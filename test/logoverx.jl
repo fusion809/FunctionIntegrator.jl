@@ -24,6 +24,10 @@ printstyled("Integrating log(x)/x from 1 to e and comparing the result to the an
     @time @test rectangle_rule_right(x -> log(x)/x, 4.372011e7, 1, exp(1)) ≈ 0.5
     printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(x -> log(x)/x, 100, 1, exp(1)) ≈ 0.5
+    printstyled("Running: simpsons38_rule\n"; color = :magenta)
+    @time @test simpsons38_rule(x -> log(x)/x, 114, 1, exp(1)) ≈ 0.5
+    printstyled("Running: adaptive_simpsons_rule with ε=1e-7\n"; color = :magenta)
+    @time @test adaptive_simpsons_rule(x -> log(x)/x, 1, exp(1), 1e-8) ≈ 0.5
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)
     @time @test trapezoidal_rule(x -> log(x)/x, 5747, 1, exp(1)) ≈ 0.5
 end

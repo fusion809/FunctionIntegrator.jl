@@ -30,6 +30,10 @@ printstyled("Integrating (x^3+1)/(x^4 (x+1)(x^2+1)) from 1 to e and comparing th
     @time @test abs(rectangle_rule_right(partfrac, 1e8, 1, exp(1)) - sol_7) < 1e-8
     printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(partfrac, 200, 1, exp(1)) ≈ sol_7
+    printstyled("Running: simpsons38_rule\n"; color = :magenta)
+    @time @test simpsons38_rule(partfrac, 234, 1, exp(1)) ≈ sol_7
+    printstyled("Running: adaptive_simpsons_rule with ε=1e-7\n"; color = :magenta)
+    @time @test adaptive_simpsons_rule(partfrac, 1, exp(1), 1e-7) ≈ sol_7
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)
     @time @test trapezoidal_rule(partfrac, 13983, 1, exp(1)) ≈ sol_7
 end

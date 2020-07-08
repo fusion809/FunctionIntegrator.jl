@@ -25,6 +25,10 @@ printstyled("Integrating cosine from 0 to pi/2 and comparing the result to the a
     @time @test rectangle_rule_right(x -> cos(x), 5.2441522e7, 0, pi/2) ≈ 1
     printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(x -> cos(x), 40, 0, pi/2) ≈ 1
+    printstyled("Running: simpsons38_rule\n"; color = :magenta)
+    @time @test simpsons38_rule(x -> cos(x), 48, 0, pi/2) ≈ 1
+    printstyled("Running: adaptive_simpsons_rule\n"; color = :magenta)
+    @time @test adaptive_simpsons_rule(x -> cos(x), 0, pi/2, 1e-7) ≈ 1
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)
     @time @test trapezoidal_rule(x -> cos(x), 3715, 0, pi/2) ≈ 1
 end
