@@ -5,6 +5,8 @@ end
 
 printstyled("Performing the besselj test, where BesselJ_1(2) is approximated and the result is compared to the value obtained from SpecialFunctions' besselj function.\n"; color = :red)
 @testset "besselj" begin
+    printstyled("Running: adaptive_simpsons_rule with ε=1e-7\n"; color = :magenta)
+    @time @test adaptive_simpsons_rule(besselj_integrand, 0, pi/2, 1e-7) ≈ besselj(1,2)
     printstyled("Running: chebyshev_quadrature with k=1\n"; color = :magenta)
     @time @test chebyshev_quadrature(besselj_integrand, 4665, 1, 0, pi/2) ≈ besselj(1,2)
     printstyled("Running: chebyshev_quadrature with k=2\n"; color = :magenta)
@@ -31,8 +33,6 @@ printstyled("Performing the besselj test, where BesselJ_1(2) is approximated and
     @time @test simpsons_rule(besselj_integrand, 6, 0, pi/2) ≈ besselj(1,2)
     printstyled("Running: simpsons38_rule\n"; color = :magenta)
     @time @test simpsons38_rule(besselj_integrand, 9, 0, pi/2) ≈ besselj(1,2)
-    printstyled("Running: adaptive_simpsons_rule with ε=1e-7\n"; color = :magenta)
-    @time @test adaptive_simpsons_rule(besselj_integrand, 0, pi/2, 1e-7) ≈ besselj(1,2)
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)
     @time @test trapezoidal_rule(besselj_integrand, 4, 0, pi/2) ≈ besselj(1,2)
 end

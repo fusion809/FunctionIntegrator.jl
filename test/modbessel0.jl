@@ -9,6 +9,8 @@ end
 
 printstyled("Approximating the modified bessel function I_1(1) and comparing it to the result obtained by SpecialFunctions.\n"; color = :red)
 @testset "modbessel0" begin
+    printstyled("Running: adaptive_simpsons_rule with ε=1e-7\n"; color = :magenta)
+    @time @test adaptive_simpsons_rule(dmodified_bessel_1, 0, pi/2, 1e-7) ≈ besseli(x,1)
     printstyled("Running: chebyshev_quadrature with k=1\n"; color = :magenta)
     @time @test chebyshev_quadrature(dmodified_bessel_1, 4942, 1, 0, pi/2) ≈ besseli(x,1)
     printstyled("Running: chebyshev_quadrature with k=2\n"; color = :magenta)
@@ -35,8 +37,6 @@ printstyled("Approximating the modified bessel function I_1(1) and comparing it 
     @time @test simpsons_rule(dmodified_bessel_1, 6, 0, pi/2) ≈ besseli(x,1)
     printstyled("Running: simpsons38_rule\n"; color = :magenta)
     @time @test simpsons38_rule(dmodified_bessel_1, 9, 0, pi/2) ≈ besseli(x,1)
-    printstyled("Running: adaptive_simpsons_rule with ε=1e-7\n"; color = :magenta)
-    @time @test adaptive_simpsons_rule(dmodified_bessel_1, 0, pi/2, 1e-7) ≈ besseli(x,1)
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)
     @time @test trapezoidal_rule(dmodified_bessel_1, 3, 0, pi/2) ≈ besseli(x,1)
 end

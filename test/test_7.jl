@@ -6,6 +6,8 @@ sol_7 = log(sqrt(2)*exp(1)/(sqrt(exp(2)+1)))+1/2*(exp(-2)-1)+1/3*(1-exp(-3));
 
 printstyled("Integrating (x^3+1)/(x^4 (x+1)(x^2+1)) from 1 to e and comparing the result to the analytical solution of log(sqrt(2)*exp(1)/(sqrt(exp(2)+1)))+1/2*(exp(-2)-1)+1/3*(1-exp(-3))\n"; color = :red)
 @testset "partfrac" begin
+    printstyled("Running: adaptive_simpsons_rule with ε=1e-7\n"; color = :magenta)
+    @time @test adaptive_simpsons_rule(partfrac, 1, exp(1), 1e-7) ≈ sol_7
     printstyled("Running: chebyshev_quadrature with k=1\n"; color = :magenta)
     @time @test chebyshev_quadrature(partfrac, 8517, 1, 1, exp(1)) ≈ sol_7
     printstyled("Running: chebyshev_quadrature with k=2\n"; color = :magenta)
@@ -32,8 +34,6 @@ printstyled("Integrating (x^3+1)/(x^4 (x+1)(x^2+1)) from 1 to e and comparing th
     @time @test simpsons_rule(partfrac, 200, 1, exp(1)) ≈ sol_7
     printstyled("Running: simpsons38_rule\n"; color = :magenta)
     @time @test simpsons38_rule(partfrac, 234, 1, exp(1)) ≈ sol_7
-    printstyled("Running: adaptive_simpsons_rule with ε=1e-7\n"; color = :magenta)
-    @time @test adaptive_simpsons_rule(partfrac, 1, exp(1), 1e-7) ≈ sol_7
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)
     @time @test trapezoidal_rule(partfrac, 13983, 1, exp(1)) ≈ sol_7
 end

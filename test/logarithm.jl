@@ -1,6 +1,8 @@
 # logarithm test
 printstyled("Integrating 1/x from 1 to e and comparing the result to the analytical solution, 1.\n"; color = :red)
 @testset "1/x" begin
+    printstyled("Running: adaptive_simpsons_rule with ε=1e-7\n"; color = :magenta)
+    @time @test adaptive_simpsons_rule(x -> x^(-1), 1, exp(1), 1e-7) ≈ 1
     printstyled("Running: chebyshev_quadrature with k=1\n"; color = :magenta)
     @time @test chebyshev_quadrature(x -> x^(-1), 5695, 1, 1, exp(1)) ≈ 1
     printstyled("Running: chebyshev_quadrature with k=2\n"; color = :magenta)
@@ -27,8 +29,6 @@ printstyled("Integrating 1/x from 1 to e and comparing the result to the analyti
     @time @test simpsons_rule(x -> x^(-1), 70, 1, exp(1)) ≈ 1
     printstyled("Running: simpsons38_rule\n"; color = :magenta)
     @time @test simpsons38_rule(x -> x^(-1), 84, 1, exp(1)) ≈ 1
-    printstyled("Running: adaptive_simpsons_rule with ε=1e-7\n"; color = :magenta)
-    @time @test adaptive_simpsons_rule(x -> x^(-1), 1, exp(1), 1e-7) ≈ 1
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)
     @time @test trapezoidal_rule(x -> x^(-1), 3779, 1, exp(1)) ≈ 1
 end

@@ -1,6 +1,8 @@
 # Simple pendulum test
 printstyled("Integrating 1/sqrt(-19.6 sin(x)) from -pi to 0 and comparing the result to the analytical solution of ellipk(1/2)/sqrt(2.45) The integrand has singularities at x = -pi and x=0, so for some of these functions the integration domain has to be itself approximated.\n"; color = :red)
 @testset "Simppen" begin
+    printstyled("Running: adaptive_simpsons_rule on [-pi+1e-8, -1e-8]. Only a rough approximation can be realistically achieved with this function, due to the singularities.\n"; color = :magenta)
+    @time @test abs(adaptive_simpsons_rule(x -> (-19.6*sin(x))^(-0.5), -pi+1e-8, -1e-8, 1e-5) - ellipk(1/2)/sqrt(2.45)) < 1e-4
     printstyled("Running: chebyshev_quadrature with k=1\n"; color = :magenta)
     @time @test chebyshev_quadrature(x -> (-19.6*sin(x))^(-0.5), 6, 1, -pi, 0) ≈ ellipk(1/2)/sqrt(2.45)
     printstyled("Running: chebyshev_quadrature with k=2\n"; color = :magenta)
@@ -29,8 +31,6 @@ printstyled("Integrating 1/sqrt(-19.6 sin(x)) from -pi to 0 and comparing the re
     @time @test abs(simpsons_rule(x -> (-19.6*sin(x))^(-0.5), 1e8, -pi+1e-8, -1e-8) - ellipk(1/2)/sqrt(2.45)) < 1e-4
     printstyled("Running: simpsons38_rule on [-pi+1e-8, -1e-8]. Only a rough approximation can be realistically achieved with this function, due to the singularities.\n"; color = :magenta)
     @time @test abs(simpsons38_rule(x -> (-19.6*sin(x))^(-0.5), 1e8+2, -pi+1e-8, -1e-8) - ellipk(1/2)/sqrt(2.45)) < 1e-4
-    printstyled("Running: adaptive_simpsons_rule on [-pi+1e-8, -1e-8]. Only a rough approximation can be realistically achieved with this function, due to the singularities.\n"; color = :magenta)
-    @time @test abs(adaptive_simpsons_rule(x -> (-19.6*sin(x))^(-0.5), -pi+1e-8, -1e-8, 1e-5) - ellipk(1/2)/sqrt(2.45)) < 1e-4
     printstyled("Running: trapezoidal_rule on [-pi+1e-8, -1e-8]. Only a rough approximation can be realistically achieved with this function, due to the singularities.\n"; color = :magenta)
     @time @test abs(trapezoidal_rule(x -> (-19.6*sin(x))^(-0.5), 1e8, -pi+1e-8, -1e-8) - ellipk(1/2)/sqrt(2.45)) < 1e-4
 end

@@ -1,6 +1,8 @@
 # cosine test
 printstyled("Integrating cosine from 0 to pi/2 and comparing the result to the analytical result of 1.\n"; color = :red)
 @testset "Cosine" begin
+    printstyled("Running: adaptive_simpsons_rule\n"; color = :magenta)
+    @time @test adaptive_simpsons_rule(x -> cos(x), 0, pi/2, 1e-7) ≈ 1
     printstyled("Running: chebyshev_quadrature with k=1\n"; color = :magenta)
     @time @test chebyshev_quadrature(x -> cos(x), 4656, 1, 0, pi/2) ≈ 1
     printstyled("Running: chebyshev_quadrature with k=2\n"; color = :magenta)
@@ -27,8 +29,6 @@ printstyled("Integrating cosine from 0 to pi/2 and comparing the result to the a
     @time @test simpsons_rule(x -> cos(x), 40, 0, pi/2) ≈ 1
     printstyled("Running: simpsons38_rule\n"; color = :magenta)
     @time @test simpsons38_rule(x -> cos(x), 48, 0, pi/2) ≈ 1
-    printstyled("Running: adaptive_simpsons_rule\n"; color = :magenta)
-    @time @test adaptive_simpsons_rule(x -> cos(x), 0, pi/2, 1e-7) ≈ 1
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)
     @time @test trapezoidal_rule(x -> cos(x), 3715, 0, pi/2) ≈ 1
 end

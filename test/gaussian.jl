@@ -1,6 +1,8 @@
 # Gaussian curve test
 printstyled("Integrate exp(-x^2) from minus infinity to positive infinity and comparing the result to the analytical solution, sqrt(pi)\n"; color = :red)
 @testset "Gaussian" begin
+    printstyled("Running: adaptive_simpsons_rule with ε=1e-7\n"; color = :magenta)
+    @time @test adaptive_simpsons_rule(x -> exp(-x^2), -100, 100, 1e-7) ≈ sqrt(pi)
     printstyled("Running: chebyshev_quadrature with k=1\n"; color = :magenta)
     @time @test chebyshev_quadrature(x -> exp(-x^2), 433, 1, -100, 100) ≈ sqrt(pi)
     printstyled("Running: chebyshev_quadrature with k=2\n"; color = :magenta)
@@ -33,8 +35,6 @@ printstyled("Integrate exp(-x^2) from minus infinity to positive infinity and co
     @time @test simpsons_rule(x -> exp(-x^2), 536, -100, 100) ≈ sqrt(pi)
     printstyled("Running: simpsons38_rule\n"; color = :magenta)
     @time @test simpsons38_rule(x -> exp(-x^2), 780, -100, 100) ≈ sqrt(pi)
-    printstyled("Running: adaptive_simpsons_rule with ε=1e-7\n"; color = :magenta)
-    @time @test adaptive_simpsons_rule(x -> exp(-x^2), -100, 100, 1e-7) ≈ sqrt(pi)
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)
     @time @test trapezoidal_rule(x -> exp(-x^2), 276, -100, 100) ≈ sqrt(pi)
 end

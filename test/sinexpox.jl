@@ -11,6 +11,8 @@ end
 
 printstyled("Integrating sin(x^2)e^(-x)/x from 0 to infinity, with the approximated domain of integration of 0 to 100. The removable singularity at x=0 in the integrand has been removed.\n"; color = :red)
 @testset "sinexpox" begin
+    printstyled("Running: adaptive_simpsons_rule with ε=1e-8\n"; color = :magenta)
+    @time @test adaptive_simpsons_rule(sinexpox, 0, 100, 1e-8) ≈ sol_11
     printstyled("Running: chebyshev_quadrature with k=1\n"; color = :magenta)
     @time @test chebyshev_quadrature(sinexpox, 655, 1, 0, 100) ≈ sol_11
     printstyled("Running: chebyshev_quadrature with k=2\n"; color = :magenta)
@@ -39,8 +41,6 @@ printstyled("Integrating sin(x^2)e^(-x)/x from 0 to infinity, with the approxima
     @time @test simpsons_rule(sinexpox, 4202, 0, 100) ≈ sol_11
     printstyled("Running: simpsons38_rule\n"; color = :magenta)
     @time @test simpsons38_rule(sinexpox, 5148, 0, 100) ≈ sol_11
-    printstyled("Running: adaptive_simpsons_rule with ε=1e-8\n"; color = :magenta)
-    @time @test adaptive_simpsons_rule(sinexpox, 0, 100, 1e-8) ≈ sol_11
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)
     @time @test trapezoidal_rule(sinexpox, 394538, 0, 100) ≈ sol_11
 end
