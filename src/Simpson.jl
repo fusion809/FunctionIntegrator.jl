@@ -1,23 +1,22 @@
-function stepwise_simpsons(f::Function, h::Number, x::Number, i::Integer, N::Number, k::Integer)
-    if k==1
-        if i == 1 || i == N + 1
-            return h / 3 * f(x)
-        elseif (i % 2) == 1
-            return 2 * h / 3 * f(x)
-        else
-            return 4 * h / 3 * f(x)
-        end
-    elseif k==2
-        if i==1 || i == N + 1
-            return (3*h/8)*f(x)
-        elseif ((i-1) % 3) == 0
-            return (3*h/4)*f(x)
-        else
-            return (9*h/8)*f(x)
-        end
+function stepwise_simpsons(f::Function, h::Number, x::Number, i::Integer, N::Number)
+    if i == 1 || i == N + 1
+        return h / 3 * f(x)
+    elseif (i % 2) == 1
+        return 2 * h / 3 * f(x)
+    else
+        return 4 * h / 3 * f(x)
     end
 end
 
+function stepwise_simpsons38(f::Function, h::Number, x::Number, i::Integer, N::Number)
+    if i==1 || i == N + 1
+        return (3*h/8)*f(x)
+    elseif ((i-1) % 3) == 0
+        return (3*h/4)*f(x)
+    else
+        return (9*h/8)*f(x)
+    end
+end
 """
     simpsons_rule(f::Function, N::Number, a::Number, b::Number)
 
@@ -34,7 +33,7 @@ function simpsons_rule(f::Function, N::Number, a::Number, b::Number)
     y = 0;
     x = a;
     for i=1:N+1
-        y = y + stepwise_simpsons(f, h, x, i, N, 1);
+        y = y + stepwise_simpsons(f, h, x, i, N);
         if i < N+1
             x = x + h;
         end
@@ -58,7 +57,7 @@ function simpsons38_rule(f::Function, N::Number, a::Number, b::Number)
     y = 0;
     x = a;
     for i=1:N+1
-        y = y + stepwise_simpsons(f, h, x, i, N, 2);
+        y = y + stepwise_simpsons38(f, h, x, i, N);
         if i < N+1
             x = x + h;
         end
