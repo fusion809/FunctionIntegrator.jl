@@ -37,6 +37,8 @@ printstyled("Integrating sin(x^2)e^(-x)/x from 0 to infinity, with the approxima
     @time @test rectangle_rule_midpoint(sinexpox, 278981, 0, 100) ≈ sol_11
     printstyled("Running: rectangle_rule_right\n"; color = :magenta)
     @time @test rectangle_rule_right(sinexpox, 394538, 0, 100) ≈ sol_11
+    printstyled("Running: rombergs_method\n"; color = :magenta)
+    @time @test rombergs_method(sinexpox, 12, 0, 100) ≈ sol_11
     printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(sinexpox, 4202, 0, 100) ≈ sol_11
     printstyled("Running: simpsons38_rule\n"; color = :magenta)

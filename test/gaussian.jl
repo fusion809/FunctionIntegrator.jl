@@ -31,6 +31,8 @@ printstyled("Integrate exp(-x^2) from minus infinity to positive infinity and co
     @time @test rectangle_rule_midpoint(x -> exp(-x^2), 276, -100, 100) ≈ sqrt(pi)
     printstyled("Running: rectangle_rule_right\n"; color = :magenta)
     @time @test rectangle_rule_right(x -> exp(-x^2), 276, -100, 100) ≈ sqrt(pi)
+    printstyled("Running: rombergs_method\n"; color = :magenta)
+    @time @test rombergs_method(x -> exp(-x^2), 12, -100, 100) ≈ sqrt(pi)
     printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(x -> exp(-x^2), 536, -100, 100) ≈ sqrt(pi)
     printstyled("Running: simpsons38_rule\n"; color = :magenta)

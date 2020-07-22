@@ -30,6 +30,8 @@ printstyled("Integrating (x^3+1)/(x^4 (x+1)(x^2+1)) from 1 to e and comparing th
     @time @test rectangle_rule_midpoint(partfrac, 9887, 1, exp(1)) ≈ sol_7
     printstyled("Running: rectangle_rule_right; only a rough approximation can be practically achieved using this function.\n"; color = :magenta)
     @time @test abs(rectangle_rule_right(partfrac, 1e8, 1, exp(1)) - sol_7) < 1e-8
+    printstyled("Running: rombergs_method\n"; color = :magenta)
+    @time @test rombergs_method(partfrac, 6, 1, exp(1)) ≈ sol_7
     printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(partfrac, 200, 1, exp(1)) ≈ sol_7
     printstyled("Running: simpsons38_rule\n"; color = :magenta)

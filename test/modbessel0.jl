@@ -33,6 +33,8 @@ printstyled("Approximating the modified bessel function I_1(1) and comparing it 
     @time @test rectangle_rule_midpoint(dmodified_bessel_1, 3, 0, pi/2) ≈ besseli(x,1)
     printstyled("Running: rectangle_rule_right\n"; color = :magenta)
     @time @test rectangle_rule_right(dmodified_bessel_1, 59275151, 0, pi/2) ≈ besseli(x,1)
+    printstyled("Running: rombergs_method\n"; color = :magenta)
+    @time @test rombergs_method(dmodified_bessel_1, 5, 0, pi/2) ≈ besseli(x,1)
     printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(dmodified_bessel_1, 6, 0, pi/2) ≈ besseli(x,1)
     printstyled("Running: simpsons38_rule\n"; color = :magenta)

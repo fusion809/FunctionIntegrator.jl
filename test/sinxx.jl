@@ -31,6 +31,8 @@ printstyled("Integrating sin(x)/x from 0 to 100 and comparing it to the exact re
     @time @test rectangle_rule_midpoint(sinxx, 12461, 0, 100) ≈ sol_8
     printstyled("Running: rectangle_rule_right; only a rough approximation can be practically achieved using this function\n"; color = :magenta)
     @time @test abs(rectangle_rule_right(sinxx, 1e8, 0, 100) - sol_8) < 5.015e-7
+    printstyled("Running: rombergs_method\n"; color = :magenta)
+    @time @test rombergs_method(sinxx, 9, 0, 100) ≈ sol_8
     printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(sinxx, 678, 0, 100) ≈ sol_8
     printstyled("Running: simpsons38_rule\n"; color = :magenta)

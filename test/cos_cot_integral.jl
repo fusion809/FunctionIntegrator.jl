@@ -31,6 +31,8 @@ printstyled("Integrating cos^2(x)/(1+cot(x)) from 0 to pi/2 and comparing the re
     @time @test rectangle_rule_midpoint(cos_cot_fn, 5254, 0, pi/2) ≈ 0.25
     printstyled("Running: rectangle_rule_right\n"; color = :magenta)
     @time @test rectangle_rule_right(cos_cot_fn, 7430, 0, pi/2) ≈ 0.25
+    printstyled("Running: rombergs_method\n"; color = :magenta)
+    @time @test rombergs_method(cos_cot_fn, 4, 0, pi/2) ≈ 0.25
     printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(cos_cot_fn, 78, 0, pi/2) ≈ 0.25
     printstyled("Running: simpsons38_rule\n"; color = :magenta)
