@@ -25,6 +25,8 @@ printstyled("Integrating 1/x from 1 to e and comparing the result to the analyti
     @time @test rectangle_rule_midpoint(x -> x^(-1), 2672, 1, exp(1)) ≈ 1
     printstyled("Running: rectangle_rule_right\n"; color = :magenta)
     @time @test rectangle_rule_right(x -> x^(-1), 3.6607201e7, 1, exp(1)) ≈ 1
+    printstyled("Running: rombergs_method\n"; color = :magenta)
+    @time @test rombergs_method(x -> 1/x, 5, 1, exp(1)) ≈ 1
     printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(x -> x^(-1), 70, 1, exp(1)) ≈ 1
     printstyled("Running: simpsons38_rule\n"; color = :magenta)

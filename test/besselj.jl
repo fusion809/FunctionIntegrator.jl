@@ -29,6 +29,8 @@ printstyled("Performing the besselj test, where BesselJ_1(2) is approximated and
     @time @test rectangle_rule_midpoint(besselj_integrand, 4, 0, pi/2) ≈ besselj(1,2)
     printstyled("Running: rectangle_rule_right\n"; color = :magenta)
     @time @test rectangle_rule_right(besselj_integrand, 52995612, 0, pi/2) ≈ besselj(1,2)
+    printstyled("Running: rombergs_method\n"; color = :magenta)
+    @time @test rombergs_method(besselj_integrand, 5, 0, pi/2) ≈ besselj(1,2)
     printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(besselj_integrand, 6, 0, pi/2) ≈ besselj(1,2)
     printstyled("Running: simpsons38_rule\n"; color = :magenta)

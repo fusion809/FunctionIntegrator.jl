@@ -25,6 +25,8 @@ printstyled("Integrating cosine from 0 to pi/2 and comparing the result to the a
     @time @test rectangle_rule_midpoint(x -> cos(x), 2627, 0, pi/2) ≈ 1
     printstyled("Running: rectangle_rule_right\n"; color = :magenta)
     @time @test rectangle_rule_right(x -> cos(x), 5.2441522e7, 0, pi/2) ≈ 1
+    printstyled("Running: rombergs_method\n"; color = :magenta)
+    @time @test rombergs_method(x -> cos(x), 3, 0, pi/2) ≈ 1
     printstyled("Running: simpsons_rule\n"; color = :magenta)
     @time @test simpsons_rule(x -> cos(x), 40, 0, pi/2) ≈ 1
     printstyled("Running: simpsons38_rule\n"; color = :magenta)
