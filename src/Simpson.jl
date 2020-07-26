@@ -79,15 +79,7 @@ function adaptive_simpsons_rule(f::Function, a::Number, b::Number, ε::Float64=1
     criterion = 100*ε;
     while criterion >= 15*ε
         criterion = abs((simpsons_rule(f, N, a, (a+b)/2)+simpsons_rule(f, N, (a+b)/2, b)-simpsons_rule(f, N, a, b))/simpsons_rule(f, N, a, b));
-        if criterion >= 15*ε
-            # The following N adjustment comes from the error formula for Simpson's rule
-            N = convert(Int64, round((((16*criterion)/(15*ε))^(1/4))*N));
-            if ! iseven(N)
-                N = N+1;
-            end
-        else
-            N = 2*N;
-        end
+        N = 2*N;
     end
     return simpsons_rule(f, N, a, b)
 end
