@@ -6,7 +6,7 @@ sol_7 = log(sqrt(2)*exp(1)/(sqrt(exp(2)+1)))+1/2*(exp(-2)-1)+1/3*(1-exp(-3));
 
 printstyled("Integrating (x^3+1)/(x^4 (x+1)(x^2+1)) from 1 to e and comparing the result to the analytical solution of log(sqrt(2)*exp(1)/(sqrt(exp(2)+1)))+1/2*(exp(-2)-1)+1/3*(1-exp(-3))\n"; color = :red)
 @testset "partfrac" begin
-    printstyled("Running: adaptive_simpsons_rule with ε=1e-7\n"; color = :magenta)
+    printstyled("Running: adaptive_simpsons_rule with ε=1e-8\n"; color = :magenta)
     # epsilon = 1e-7, despite leading to an absolute and relative error < 1e-7
     # leads to the test failing
     @time @test adaptive_simpsons_rule(partfrac, 1, exp(1), 1e-8) ≈ sol_7

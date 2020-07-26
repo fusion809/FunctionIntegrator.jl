@@ -7,7 +7,7 @@ sol_8 = 1.562225466889056293352345138804502677227824980541083456384;
 
 printstyled("Integrating sin(x)/x from 0 to 100 and comparing it to the exact result.\n"; color = :red)
 @testset "sinxx" begin
-    printstyled("Running: adaptive_simpsons_rule with ε=1e-7\n"; color = :magenta)
+    printstyled("Running: adaptive_simpsons_rule with ε=1e-8\n"; color = :magenta)
     # Using 1e-7 returns and error, despite it being accurate to an absolute and 
     # relative tolerance of 1e-7
     @time @test adaptive_simpsons_rule(sinxx, 0, 100, 1e-8) ≈ sol_8
