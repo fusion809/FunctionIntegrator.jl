@@ -35,7 +35,7 @@ function simpsons_rule(f::Function, N::Number, a::Number, b::Number)
     for i=1:N+1
         y = y + stepwise_simpsons(f, h, x, i, N);
         if i < N+1
-            x = x + h;
+            x += h;
         end
     end
     return y
@@ -59,7 +59,7 @@ function simpsons38_rule(f::Function, N::Number, a::Number, b::Number)
     for i=1:N+1
         y = y + stepwise_simpsons38(f, h, x, i, N);
         if i < N+1
-            x = x + h;
+            x += h;
         end
     end
     return y

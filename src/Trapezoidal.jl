@@ -23,7 +23,7 @@ function trapezoidal_rule(f::Function, N::Number, a::Number, b::Number)
     for i=1:N+1
         y = y + stepwise_trapezoidal(f, h, x, i, N);
         if i < N+1
-            x = x + h;
+            x += h;
         end
     end
     return y
