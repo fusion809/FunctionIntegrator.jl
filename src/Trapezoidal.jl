@@ -1,9 +1,5 @@
 function stepwise_trapezoidal(f, h, x, i, N)
-    if i == 1 || i == N + 1
-        return h / 2 * f(x)
-    else
-        return h * f(x)
-    end
+    return h/2 * (f(x) + f(x+h));
 end
 
 """
@@ -20,11 +16,9 @@ function trapezoidal_rule(f::Function, N::Number, a::Number, b::Number)
     h = (b-a)/N;
     y = 0;
     x = a;
-    for i=1:N+1
-        y = y + stepwise_trapezoidal(f, h, x, i, N);
-        if i < N+1
-            x += h;
-        end
+    for i=1:N
+        y += stepwise_trapezoidal(f, h, x, i, N);
+        x += h;
     end
     return y
 end

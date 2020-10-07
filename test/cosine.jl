@@ -28,7 +28,7 @@ printstyled("Integrating cosine from 0 to pi/2 and comparing the result to the a
     printstyled("Running: rombergs_method\n"; color = :magenta)
     @time @test rombergs_method(x -> cos(x), 3, 0, pi/2) ≈ 1
     printstyled("Running: simpsons_rule\n"; color = :magenta)
-    @time @test simpsons_rule(x -> cos(x), 40, 0, pi/2) ≈ 1
+    @time @test simpsons_rule(x -> cos(x), 20, 0, pi/2) ≈ 1
     printstyled("Running: simpsons38_rule\n"; color = :magenta)
     @time @test simpsons38_rule(x -> cos(x), 48, 0, pi/2) ≈ 1
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)

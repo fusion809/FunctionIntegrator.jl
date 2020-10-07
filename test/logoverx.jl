@@ -27,7 +27,7 @@ printstyled("Integrating log(x)/x from 1 to e and comparing the result to the an
     printstyled("Running: rombergs_method\n"; color = :magenta)
     @time @test rombergs_method(x -> log(x)/x, 5, 1, exp(1)) ≈ 0.5
     printstyled("Running: simpsons_rule\n"; color = :magenta)
-    @time @test simpsons_rule(x -> log(x)/x, 100, 1, exp(1)) ≈ 0.5
+    @time @test simpsons_rule(x -> log(x)/x, 50, 1, exp(1)) ≈ 0.5
     printstyled("Running: simpsons38_rule\n"; color = :magenta)
     @time @test simpsons38_rule(x -> log(x)/x, 114, 1, exp(1)) ≈ 0.5
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)

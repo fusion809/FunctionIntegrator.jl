@@ -30,7 +30,7 @@ printstyled("Integrating 1/sqrt(-19.6 sin(x)) from -pi to 0 and comparing the re
     printstyled("Running: rombergs_method on [-pi+1e-8, -1e-8]. Only a rough approximation can be realistically achieved with this function, due to the singularities.\n"; color = :magenta)
     @time @test abs(rombergs_method(x -> (-19.6*sin(x))^(-0.5), 24, -pi+1e-8, -1e-8) - ellipk(1/2)/sqrt(2.45)) < 1e-4
     printstyled("Running: simpsons_rule on [-pi+1e-8, -1e-8]. Only a rough approximation can be realistically achieved with this function, due to the singularities.\n"; color = :magenta)
-    @time @test abs(simpsons_rule(x -> (-19.6*sin(x))^(-0.5), 1e8, -pi+1e-8, -1e-8) - ellipk(1/2)/sqrt(2.45)) < 1e-4
+    @time @test abs(simpsons_rule(x -> (-19.6*sin(x))^(-0.5), 5e7, -pi+1e-8, -1e-8) - ellipk(1/2)/sqrt(2.45)) < 1e-4
     printstyled("Running: simpsons38_rule on [-pi+1e-8, -1e-8]. Only a rough approximation can be realistically achieved with this function, due to the singularities.\n"; color = :magenta)
     @time @test abs(simpsons38_rule(x -> (-19.6*sin(x))^(-0.5), 1e8+2, -pi+1e-8, -1e-8) - ellipk(1/2)/sqrt(2.45)) < 1e-4
     printstyled("Running: trapezoidal_rule on [-pi+1e-8, -1e-8]. Only a rough approximation can be realistically achieved with this function, due to the singularities.\n"; color = :magenta)

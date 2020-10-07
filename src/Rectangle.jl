@@ -13,7 +13,7 @@ function rectangle_rule_left(f::Function, N::Number, a::Number, b::Number)
     y = 0;
     x = a;
     for i=1:N
-        y += h*f(x)
+        y += h*f(x);
         x += h;
     end
     return y
@@ -34,7 +34,7 @@ function rectangle_rule_midpoint(f::Function, N::Number, a::Number, b::Number)
     y = 0;
     x = a+h/2;
     for i=1:N
-        y += h*f(x)
+        y += h*f(x);
         x += h;
     end
     return y
@@ -55,7 +55,7 @@ function rectangle_rule_right(f::Function, N::Number, a::Number, b::Number)
     y = 0;
     x = a+h;
     for i=1:N
-        y += h*f(x)
+        y += h*f(x);
         x += h;
     end
     return y

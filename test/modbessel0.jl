@@ -36,7 +36,7 @@ printstyled("Approximating the modified bessel function I_1(1) and comparing it 
     printstyled("Running: rombergs_method\n"; color = :magenta)
     @time @test rombergs_method(dmodified_bessel_1, 5, 0, pi/2) ≈ besseli(x,1)
     printstyled("Running: simpsons_rule\n"; color = :magenta)
-    @time @test simpsons_rule(dmodified_bessel_1, 6, 0, pi/2) ≈ besseli(x,1)
+    @time @test simpsons_rule(dmodified_bessel_1, 3, 0, pi/2) ≈ besseli(x,1)
     printstyled("Running: simpsons38_rule\n"; color = :magenta)
     @time @test simpsons38_rule(dmodified_bessel_1, 9, 0, pi/2) ≈ besseli(x,1)
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)

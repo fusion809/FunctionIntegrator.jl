@@ -34,7 +34,7 @@ printstyled("Integrating e^(-x^2)/(1+x^2) on the infinite domain [-inf, inf], or
     printstyled("Running: rombergs_method\n"; color = :magenta)
     @time @test rombergs_method(x -> exp(-x^2)/(x^2+1), 12, -100, 100) ≈ sol_9
     printstyled("Running: simpsons_rule\n"; color = :magenta)
-    @time @test simpsons_rule(x -> exp(-x^2)/(x^2+1), 1240, -100, 100) ≈ sol_9
+    @time @test simpsons_rule(x -> exp(-x^2)/(x^2+1), 620, -100, 100) ≈ sol_9
     printstyled("Running: simpsons38_rule\n"; color = :magenta)
     @time @test simpsons38_rule(x -> exp(-x^2)/(x^2+1), 1767, -100, 100) ≈ sol_9
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)

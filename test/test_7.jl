@@ -35,7 +35,7 @@ printstyled("Integrating (x^3+1)/(x^4 (x+1)(x^2+1)) from 1 to e and comparing th
     printstyled("Running: rombergs_method\n"; color = :magenta)
     @time @test rombergs_method(partfrac, 6, 1, exp(1)) ≈ sol_7
     printstyled("Running: simpsons_rule\n"; color = :magenta)
-    @time @test simpsons_rule(partfrac, 200, 1, exp(1)) ≈ sol_7
+    @time @test simpsons_rule(partfrac, 100, 1, exp(1)) ≈ sol_7
     printstyled("Running: simpsons38_rule\n"; color = :magenta)
     @time @test simpsons38_rule(partfrac, 234, 1, exp(1)) ≈ sol_7
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)

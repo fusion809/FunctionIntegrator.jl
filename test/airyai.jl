@@ -30,7 +30,7 @@ printstyled("Performing the Airy Ai(x) test, where Ai(x) is integrated on the se
     printstyled("Running: rombergs_method\n"; color = :magenta)
     @time @test rombergs_method(x -> airyai(x), 9, 0, 100) ≈ 1.0/3.0
     printstyled("Running: simpsons_rule\n"; color = :magenta)
-    @time @test simpsons_rule(x -> airyai(x), 2512, 0, 100) ≈ 1.0/3.0
+    @time @test simpsons_rule(x -> airyai(x), 1256, 0, 100) ≈ 1.0/3.0
     printstyled("Running: simpsons38_rule\n"; color = :magenta)
     @time @test simpsons38_rule(x -> airyai(x), 3075, 0, 100) ≈ 1.0/3.0
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)

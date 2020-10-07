@@ -1,11 +1,5 @@
-function stepwise_simpsons(f::Function, h::Number, x::Number, i::Integer, N::Number)
-    if i == 1 || i == N + 1
-        return h / 3 * f(x)
-    elseif (i % 2) == 1
-        return 2 * h / 3 * f(x)
-    else
-        return 4 * h / 3 * f(x)
-    end
+function stepwise_simpsons(f::Function, h::Number, x::Number)
+    return h/6 * (f(x) + 4*f(x+h/2) + f(x+h));
 end
 
 function stepwise_simpsons38(f::Function, h::Number, x::Number, i::Integer, N::Number)
@@ -28,15 +22,12 @@ uses [Simpson's rule](https://en.wikipedia.org/wiki/Simpson%27s_rule) to approxi
 """
 function simpsons_rule(f::Function, N::Number, a::Number, b::Number)
     N = convert(Int64, N);
-    iseven(N) || error("N must be even in order for Simspon's rule to work properly.")
     h = (b-a)/N;
     y = 0;
     x = a;
-    for i=1:N+1
-        y = y + stepwise_simpsons(f, h, x, i, N);
-        if i < N+1
-            x += h;
-        end
+    for i=1:N
+        y += stepwise_simpsons(f, h, x);
+        x += h;
     end
     return y
 end

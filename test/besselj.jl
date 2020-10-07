@@ -32,7 +32,7 @@ printstyled("Performing the besselj test, where BesselJ_1(2) is approximated and
     printstyled("Running: rombergs_method\n"; color = :magenta)
     @time @test rombergs_method(besselj_integrand, 5, 0, pi/2) ≈ besselj(1,2)
     printstyled("Running: simpsons_rule\n"; color = :magenta)
-    @time @test simpsons_rule(besselj_integrand, 6, 0, pi/2) ≈ besselj(1,2)
+    @time @test simpsons_rule(besselj_integrand, 3, 0, pi/2) ≈ besselj(1,2)
     printstyled("Running: simpsons38_rule\n"; color = :magenta)
     @time @test simpsons38_rule(besselj_integrand, 9, 0, pi/2) ≈ besselj(1,2)
     printstyled("Running: trapezoidal_rule\n"; color = :magenta)
